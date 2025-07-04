@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTM Territory Map - Santa Cruz</title>
+    <!-- 
+        VTM Territory Map - 3D Visualization Interface
+        
+        This page provides an interactive 3D visualization of city maps where users can
+        assign vampire clan territories to buildings and areas. It uses Three.js for
+        3D rendering and provides a dark, atmospheric interface suitable for
+        Vampire: The Masquerade campaigns.
+        
+        Features:
+        - 3D city visualization with buildings, roads, and landmarks
+        - Clan selection and territory assignment
+        - Interactive camera controls (zoom, pan, rotate)
+        - Real-time territory visualization with clan colors
+        - Atmospheric lighting for vampire theme
+    -->
+    <style>
+        /* 
+         * CSS Styles for VTM Territory Map Interface
+         * Dark theme appropriate for vampire content
+         */
+        
+        /* Reset and base styles */
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1a1a1a;  /* Dark background */
+            color: #fff;          /* Light text */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;     /* Prevent scrollbars on 3D canvas */
+        }
+        
+        /* Main container for the entire application */
+        #container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        /* 3D canvas element - fills entire viewport */
+        #canvas {
+            display: block;
+        }
+        
+        /* User interface panel - positioned over the 3D scene */
+        #ui {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;                    /* Ensure UI appears above 3D scene */
+            background: rgba(0, 0, 0, 0.8);  /* Semi-transparent dark background */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 300px;
+            backdrop-filter: blur(5px);      /* Blur effect for modern browsers */
+        }
+        
+        #status {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        
+        .clan-button {
+            display: inline-block;
+            padding: 8px 12px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            color: white;
+            transition: opacity 0.3s;
+        }
+        
+        .clan-button:hover {
+            opacity: 0.8;
+        }
+        
+        .territory-info {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        
+        h1 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            color: #8B0000;
+        }
+        
+        h2 {
+            margin: 15px 0 5px 0;
+            font-size: 14px;
+            color: #CC6666;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <canvas id="canvas"></canvas>
+        
+        <div id="ui">
+            <h1>🧛 VTM Territory Map</h1>
+            <h2>Santa Cruz, CA</h2>
+            
+            <div>
+                <h2>Select Clan:</h2>
+                <button class="clan-button" style="background-color: #1a365d;" onclick="selectClan('ventrue')">Ventrue</button>
+                <button class="clan-button" style="background-color: #c53030;" onclick="selectClan('toreador')">Toreador</button>
+                <button class="clan-button" style="background-color: #d69e2e;" onclick="selectClan('brujah')">Brujah</button>
+                <button class="clan-button" style="background-color: #553c9a;" onclick="selectClan('malkavian')">Malkavian</button>
+                <button class="clan-button" style="background-color: #2d3748;" onclick="selectClan('nosferatu')">Nosferatu</button>
+                <button class="clan-button" style="background-color: #38a169;" onclick="selectClan('gangrel')">Gangrel</button>
+                <button class="clan-button" style="background-color: #805ad5;" onclick="selectClan('tremere')">Tremere</button>
+            </div>
+            
+            <div class="territory-info">
+                <strong>Instructions:</strong><br>
+                1. Select a clan above<br>
+                2. Click on buildings to assign territory<br>
+                3. Right-click to remove assignment<br>
+                4. Use mouse wheel to zoom<br>
+                5. Click and drag to pan
+            </div>
+        </div>
+        
+        <div id="status">
+            Loading Santa Cruz map data...
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        /**
+         * VTM Map 3D Visualization System
+         * 
+         * This JavaScript application creates an interactive 3D map visualization
+         * for Vampire: The Masquerade territory assignment. It uses Three.js for
+         * 3D rendering and provides tools for clan territory management.
+         * 
+         * Key Features:
+         * - 3D city rendering with buildings, roads, and landmarks
+         * - Interactive clan selection and territory assignment
+         * - Mouse controls for camera movement and interaction
+         * - Real-time territory visualization with clan colors
+         * - Atmospheric lighting effects for vampire theme
+         * 
+         * Controls:
+         * - Left click: Assign selected clan to building
+         * - Right click: Remove clan assignment from building
+         * - Mouse drag: Pan camera around the scene
+         * - Mouse wheel: Zoom in/out
+         * 
+         * @author VTM Map Project
+         * @version 1.0.0
+         */
+        
+        /**
+         * Main VTM Map visualization class
+         * Manages the 3D scene, user interactions, and territory assignments
+         */
+        class VTMMap {
+            /**
+             * Initialize the VTM Map visualization
+             * Sets up Three.js scene, camera, renderer, and event handlers
+             */
+            constructor() {
+                // Core Three.js objects
+                this.scene = null;              // 3D scene container
+                this.camera = null;             // Camera for viewing the scene
+                this.renderer = null;           // WebGL renderer
+                
+                // Interaction management
+                this.selectedClan = null;       // Currently selected vampire clan
+                this.territories = new Map();   // Map of assigned territories
+                this.buildings = [];            // Array of building meshes
+                this.raycaster = new THREE.Raycaster(); // For mouse picking
+                this.mouse = new THREE.Vector2();       // Mouse coordinates
+                
+                // Clan color mapping (hex values converted to Three.js color format)
+                this.clanColors = {
+                    'ventrue': 0x1a365d,    // Deep blue
+                    'toreador': 0xc53030,   // Deep red  
+                    'brujah': 0xd69e2e,     // Golden yellow
+                    'malkavian': 0x553c9a,  // Purple
+                    'nosferatu': 0x2d3748,  // Dark gray
+                    'gangrel': 0x38a169,    // Forest green
+                    'tremere': 0x805ad5     // Mystical purple
+                };
+                
+                // Initialize the application
+                this.init();
+                this.createSampleCity();
+                this.animate();
+            }
+            
+            init() {
+                const container = document.getElementById('canvas');
+                
+                // Scene
+                this.scene = new THREE.Scene();
+                this.scene.background = new THREE.Color(0x0a0a0a);
+                this.scene.fog = new THREE.Fog(0x0a0a0a, 500, 2000);
+                
+                // Camera
+                this.camera = new THREE.PerspectiveCamera(
+                    75, 
+                    window.innerWidth / window.innerHeight, 
+                    1, 
+                    3000
+                );
+                this.camera.position.set(0, 200, 300);
+                this.camera.lookAt(0, 0, 0);
+                
+                // Renderer
+                this.renderer = new THREE.WebGLRenderer({ 
+                    canvas: container,
+                    antialias: true 
+                });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                this.renderer.shadowMap.enabled = true;
+                this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+                
+                // Lights
+                const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
+                this.scene.add(ambientLight);
+                
+                const moonLight = new THREE.DirectionalLight(0x4060aa, 0.6);
+                moonLight.position.set(-100, 200, 100);
+                moonLight.castShadow = true;
+                moonLight.shadow.mapSize.width = 2048;
+                moonLight.shadow.mapSize.height = 2048;
+                this.scene.add(moonLight);
+                
+                // Street lights effect
+                const streetLight = new THREE.PointLight(0xffaa44, 0.3, 100);
+                streetLight.position.set(0, 20, 0);
+                this.scene.add(streetLight);
+                
+                // Event listeners
+                window.addEventListener('resize', () => this.onWindowResize(), false);
+                container.addEventListener('click', (event) => this.onMouseClick(event), false);
+                container.addEventListener('mousemove', (event) => this.onMouseMove(event), false);
+                
+                // Mouse controls
+                this.setupMouseControls();
+                
+                document.getElementById('status').textContent = 'Santa Cruz 3D map loaded - Select a clan and click buildings!';
+            }
+            
+            setupMouseControls() {
+                let isMouseDown = false;
+                let mouseX = 0;
+                let mouseY = 0;
+                
+                this.renderer.domElement.addEventListener('mousedown', (event) => {
+                    isMouseDown = true;
+                    mouseX = event.clientX;
+                    mouseY = event.clientY;
+                });
+                
+                this.renderer.domElement.addEventListener('mouseup', () => {
+                    isMouseDown = false;
+                });
+                
+                this.renderer.domElement.addEventListener('mousemove', (event) => {
+                    if (isMouseDown) {
+                        const deltaX = event.clientX - mouseX;
+                        const deltaY = event.clientY - mouseY;
+                        
+                        this.camera.position.x -= deltaX * 0.5;
+                        this.camera.position.z -= deltaY * 0.5;
+                        
+                        mouseX = event.clientX;
+                        mouseY = event.clientY;
+                    }
+                });
+                
+                this.renderer.domElement.addEventListener('wheel', (event) => {
+                    this.camera.position.y += event.deltaY * 0.1;
+                    this.camera.position.y = Math.max(50, Math.min(500, this.camera.position.y));
+                });
+            }
+            
+            createSampleCity() {
+                // Create a sample city layout representing Santa Cruz
+                const groundGeometry = new THREE.PlaneGeometry(1000, 1000);
+                const groundMaterial = new THREE.MeshLambertMaterial({ color: 0x1a1a1a });
+                const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+                ground.rotation.x = -Math.PI / 2;
+                ground.receiveShadow = true;
+                this.scene.add(ground);
+                
+                // Create sample buildings in a grid pattern
+                for (let i = 0; i < 50; i++) {
+                    const building = this.createBuilding(
+                        (Math.random() - 0.5) * 800,
+                        (Math.random() - 0.5) * 800,
+                        Math.random() * 30 + 10
+                    );
+                    this.buildings.push(building);
+                    this.scene.add(building);
+                }
+                
+                // Create some streets
+                this.createStreets();
+                
+                // Add some water (representing Santa Cruz coastline)
+                this.createWater();
+            }
+            
+            createBuilding(x, z, height) {
+                const width = Math.random() * 20 + 10;
+                const depth = Math.random() * 20 + 10;
+                
+                const geometry = new THREE.BoxGeometry(width, height, depth);
+                const material = new THREE.MeshLambertMaterial({ 
+                    color: 0x666666,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                
+                const building = new THREE.Mesh(geometry, material);
+                building.position.set(x, height / 2, z);
+                building.castShadow = true;
+                building.receiveShadow = true;
+                building.userData = { 
+                    type: 'building', 
+                    clan: null,
+                    originalColor: 0x666666
+                };
+                
+                return building;
+            }
+            
+            createStreets() {
+                // Main streets
+                for (let i = -400; i <= 400; i += 100) {
+                    const streetGeometry = new THREE.PlaneGeometry(800, 8);
+                    const streetMaterial = new THREE.MeshLambertMaterial({ color: 0x333333 });
+                    const street = new THREE.Mesh(streetGeometry, streetMaterial);
+                    street.rotation.x = -Math.PI / 2;
+                    street.position.set(i, 0.1, 0);
+                    this.scene.add(street);
+                    
+                    const street2 = new THREE.Mesh(streetGeometry, streetMaterial);
+                    street2.rotation.x = -Math.PI / 2;
+                    street2.rotation.z = Math.PI / 2;
+                    street2.position.set(0, 0.1, i);
+                    this.scene.add(street2);
+                }
+            }
+            
+            createWater() {
+                const waterGeometry = new THREE.PlaneGeometry(1000, 200);
+                const waterMaterial = new THREE.MeshLambertMaterial({ 
+                    color: 0x001166,
+                    transparent: true,
+                    opacity: 0.7
+                });
+                const water = new THREE.Mesh(waterGeometry, waterMaterial);
+                water.rotation.x = -Math.PI / 2;
+                water.position.set(0, 0.5, -450);
+                this.scene.add(water);
+            }
+            
+            onMouseClick(event) {
+                if (!this.selectedClan) {
+                    document.getElementById('status').textContent = 'Please select a clan first!';
+                    return;
+                }
+                
+                this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+                this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+                
+                this.raycaster.setFromCamera(this.mouse, this.camera);
+                const intersects = this.raycaster.intersectObjects(this.buildings);
+                
+                if (intersects.length > 0) {
+                    const building = intersects[0].object;
+                    
+                    if (event.button === 2) { // Right click - remove territory
+                        this.removeTerritoryFromBuilding(building);
+                    } else { // Left click - assign territory
+                        this.assignTerritoryToBuilding(building, this.selectedClan);
+                    }
+                }
+            }
+            
+            onMouseMove(event) {
+                this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+                this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            }
+            
+            assignTerritoryToBuilding(building, clan) {
+                building.userData.clan = clan;
+                building.material.color.setHex(this.clanColors[clan]);
+                building.material.opacity = 0.9;
+                
+                const territoryKey = `${building.position.x}_${building.position.z}`;
+                this.territories.set(territoryKey, clan);
+                
+                document.getElementById('status').textContent = 
+                    `Building assigned to ${clan.charAt(0).toUpperCase() + clan.slice(1)}`;
+            }
+            
+            removeTerritoryFromBuilding(building) {
+                building.userData.clan = null;
+                building.material.color.setHex(building.userData.originalColor);
+                building.material.opacity = 0.8;
+                
+                const territoryKey = `${building.position.x}_${building.position.z}`;
+                this.territories.delete(territoryKey);
+                
+                document.getElementById('status').textContent = 'Territory removed from building';
+            }
+            
+            onWindowResize() {
+                this.camera.aspect = window.innerWidth / window.innerHeight;
+                this.camera.updateProjectionMatrix();
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+            
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                
+                // Gentle camera movement for atmosphere
+                this.camera.position.x += Math.sin(Date.now() * 0.0001) * 0.1;
+                this.camera.lookAt(0, 0, 0);
+                
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        
+        // Global functions
+        function selectClan(clan) {
+            window.vtmMap.selectedClan = clan;
+            document.getElementById('status').textContent = 
+                `${clan.charAt(0).toUpperCase() + clan.slice(1)} clan selected - Click buildings to assign territory`;
+            
+            // Update button styles
+            document.querySelectorAll('.clan-button').forEach(btn => {
+                btn.style.border = '2px solid transparent';
+            });
+            event.target.style.border = '2px solid white';
+        }
+        
+        // Initialize the application
+        window.addEventListener('load', () => {
+            window.vtmMap = new VTMMap();
+        });
+        
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+    </script>
+</body>
+</html>

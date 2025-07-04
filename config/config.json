@@ -1,0 +1,122 @@
+{
+  "cities": {
+    "santa-cruz": {
+      "name": "Santa Cruz, CA",
+      "bbox": {
+        "south": 36.9400,
+        "west": -122.0700,
+        "north": 37.0100,
+        "east": -121.9800
+      },
+      "center": {
+        "lat": 36.9741,
+        "lon": -122.0308
+      },
+      "timezone": "America/Los_Angeles"
+    },
+    "los-angeles": {
+      "name": "Los Angeles, CA",
+      "bbox": {
+        "south": 34.0000,
+        "west": -118.5000,
+        "north": 34.1500,
+        "east": -118.2000
+      },
+      "center": {
+        "lat": 34.0522,
+        "lon": -118.2437
+      },
+      "timezone": "America/Los_Angeles"
+    }
+  },
+  "vtm": {
+    "clans": {
+      "ventrue": {
+        "name": "Ventrue",
+        "color": "#1a365d",
+        "description": "The Clan of Kings",
+        "disciplines": ["Dominate", "Fortitude", "Presence"]
+      },
+      "toreador": {
+        "name": "Toreador",
+        "color": "#c53030",
+        "description": "The Clan of the Rose",
+        "disciplines": ["Auspex", "Celerity", "Presence"]
+      },
+      "brujah": {
+        "name": "Brujah",
+        "color": "#d69e2e",
+        "description": "The Rabble",
+        "disciplines": ["Celerity", "Potence", "Presence"]
+      },
+      "malkavian": {
+        "name": "Malkavian",
+        "color": "#553c9a",
+        "description": "The Clan of the Moon",
+        "disciplines": ["Auspex", "Dementation", "Obfuscate"]
+      },
+      "nosferatu": {
+        "name": "Nosferatu",
+        "color": "#2d3748",
+        "description": "The Sewer Rats",
+        "disciplines": ["Animalism", "Obfuscate", "Potence"]
+      },
+      "gangrel": {
+        "name": "Gangrel",
+        "color": "#38a169",
+        "description": "The Outlanders",
+        "disciplines": ["Animalism", "Fortitude", "Protean"]
+      },
+      "tremere": {
+        "name": "Tremere",
+        "color": "#805ad5",
+        "description": "The Warlocks",
+        "disciplines": ["Auspex", "Dominate", "Thaumaturgy"]
+      }
+    },
+    "territoryTypes": {
+      "feeding": {
+        "name": "Feeding Grounds",
+        "description": "Areas where vampires hunt for blood",
+        "examples": ["nightclubs", "bars", "hospitals", "homeless shelters"]
+      },
+      "haven": {
+        "name": "Haven",
+        "description": "Safe houses and resting places",
+        "examples": ["mansions", "apartments", "warehouses", "underground bunkers"]
+      },
+      "influence": {
+        "name": "Influence",
+        "description": "Areas of mortal influence and control",
+        "examples": ["city hall", "police stations", "banks", "media outlets"]
+      },
+      "elysium": {
+        "name": "Elysium",
+        "description": "Neutral meeting grounds",
+        "examples": ["museums", "theaters", "libraries", "parks"]
+      },
+      "contested": {
+        "name": "Contested Territory",
+        "description": "Areas under dispute between clans",
+        "examples": ["border areas", "valuable resources", "strategic locations"]
+      }
+    }
+  },
+  "rendering": {
+    "buildingHeights": {
+      "default": 12,
+      "residential": 8,
+      "commercial": 15,
+      "industrial": 10,
+      "hospital": 20,
+      "university": 18
+    },
+    "colors": {
+      "building": "#cccccc",
+      "road": "#444444",
+      "water": "#4299e1",
+      "park": "#68d391",
+      "neutral": "#e2e8f0"
+    }
+  }
+}
