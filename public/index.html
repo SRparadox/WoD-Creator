@@ -128,17 +128,28 @@
             </div>
             
             <div class="territory-info">
-                <strong>Instructions:</strong><br>
+                <strong>Controls:</strong><br>
+                🎮 <strong>Movement:</strong><br>
+                • W/A/S/D - Move forward/left/back/right<br>
+                • Space - Move up<br>
+                • Shift - Move down (or hold for fast mode)<br>
+                <br>
+                🖱️ <strong>Mouse:</strong><br>
+                • Middle-click - Enable mouse look<br>
+                • Mouse wheel - Zoom in/out<br>
+                • Left click - Assign clan territory<br>
+                • Right click - Remove territory<br>
+                • ESC - Exit mouse look mode<br>
+                <br>
+                <strong>Territory Assignment:</strong><br>
                 1. Select a clan above<br>
-                2. Click on buildings to assign territory<br>
-                3. Right-click to remove assignment<br>
-                4. Use mouse wheel to zoom<br>
-                5. Click and drag to pan
+                2. Click buildings to assign<br>
+                3. Buildings will change color
             </div>
         </div>
         
         <div id="status">
-            Loading Santa Cruz map data...
+            Middle-click to enable mouse look, WASD to move
         </div>
     </div>
 
@@ -234,71 +245,262 @@
                 this.renderer.shadowMap.enabled = true;
                 this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
                 
-                // Lights
-                const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
+                // Improved lighting system - much brighter and more visible
+                // Strong ambient light for overall scene illumination
+                const ambientLight = new THREE.AmbientLight(0x606060, 0.8);
                 this.scene.add(ambientLight);
                 
-                const moonLight = new THREE.DirectionalLight(0x4060aa, 0.6);
-                moonLight.position.set(-100, 200, 100);
-                moonLight.castShadow = true;
-                moonLight.shadow.mapSize.width = 2048;
-                moonLight.shadow.mapSize.height = 2048;
-                this.scene.add(moonLight);
+                // Main directional light (sunlight/moonlight)
+                const mainLight = new THREE.DirectionalLight(0xffffff, 1.2);
+                mainLight.position.set(100, 300, 100);
+                mainLight.castShadow = true;
+                mainLight.shadow.mapSize.width = 2048;
+                mainLight.shadow.mapSize.height = 2048;
+                mainLight.shadow.camera.near = 0.5;
+                mainLight.shadow.camera.far = 1000;
+                mainLight.shadow.camera.left = -500;
+                mainLight.shadow.camera.right = 500;
+                mainLight.shadow.camera.top = 500;
+                mainLight.shadow.camera.bottom = -500;
+                this.scene.add(mainLight);
                 
-                // Street lights effect
-                const streetLight = new THREE.PointLight(0xffaa44, 0.3, 100);
-                streetLight.position.set(0, 20, 0);
-                this.scene.add(streetLight);
+                // Secondary light from opposite direction for better visibility
+                const fillLight = new THREE.DirectionalLight(0x8888ff, 0.6);
+                fillLight.position.set(-100, 200, -100);
+                this.scene.add(fillLight);
                 
-                // Event listeners
+                // Point lights for atmospheric effect
+                const streetLight1 = new THREE.PointLight(0xffaa44, 0.8, 200);
+                streetLight1.position.set(50, 30, 50);
+                this.scene.add(streetLight1);
+                
+                const streetLight2 = new THREE.PointLight(0xffaa44, 0.8, 200);
+                streetLight2.position.set(-50, 30, -50);
+                this.scene.add(streetLight2);
+                
+                // Event listeners for improved controls
                 window.addEventListener('resize', () => this.onWindowResize(), false);
                 container.addEventListener('click', (event) => this.onMouseClick(event), false);
                 container.addEventListener('mousemove', (event) => this.onMouseMove(event), false);
+                container.addEventListener('contextmenu', (event) => event.preventDefault(), false);
                 
                 // Mouse controls
-                this.setupMouseControls();
+                this.setupAdvancedControls();
                 
-                document.getElementById('status').textContent = 'Santa Cruz 3D map loaded - Select a clan and click buildings!';
+                document.getElementById('status').textContent = 'Santa Cruz 3D map loaded - Middle-click for mouse look, WASD to move!';
             }
             
-            setupMouseControls() {
-                let isMouseDown = false;
-                let mouseX = 0;
-                let mouseY = 0;
+            /**
+             * Setup advanced movement controls (WASD + mouse look)
+             * Provides first-person style navigation similar to gaming controls
+             */
+            setupAdvancedControls() {
+                // Movement state tracking
+                this.moveState = {
+                    forward: false,  // W key
+                    backward: false, // S key  
+                    left: false,     // A key
+                    right: false,    // D key
+                    up: false,       // Space key
+                    down: false      // Shift key
+                };
                 
+                // Mouse look state
+                this.mouseState = {
+                    isLocked: false,
+                    sensitivity: 0.002,
+                    yaw: 0,    // Horizontal rotation
+                    pitch: 0,  // Vertical rotation
+                    maxPitch: Math.PI / 3  // Limit vertical look
+                };
+                
+                // Movement speed settings
+                this.movementSpeed = 2.0;  // Units per frame
+                this.fastMovementSpeed = 4.0;  // With shift held
+                
+                // Keyboard event handlers
+                document.addEventListener('keydown', (event) => this.onKeyDown(event), false);
+                document.addEventListener('keyup', (event) => this.onKeyUp(event), false);
+                
+                // Mouse look handlers
                 this.renderer.domElement.addEventListener('mousedown', (event) => {
-                    isMouseDown = true;
-                    mouseX = event.clientX;
-                    mouseY = event.clientY;
-                });
-                
-                this.renderer.domElement.addEventListener('mouseup', () => {
-                    isMouseDown = false;
-                });
-                
-                this.renderer.domElement.addEventListener('mousemove', (event) => {
-                    if (isMouseDown) {
-                        const deltaX = event.clientX - mouseX;
-                        const deltaY = event.clientY - mouseY;
-                        
-                        this.camera.position.x -= deltaX * 0.5;
-                        this.camera.position.z -= deltaY * 0.5;
-                        
-                        mouseX = event.clientX;
-                        mouseY = event.clientY;
+                    if (event.button === 1) { // Middle mouse button for mouse look
+                        this.requestPointerLock();
                     }
                 });
                 
+                this.renderer.domElement.addEventListener('mousemove', (event) => {
+                    if (this.mouseState.isLocked) {
+                        this.updateMouseLook(event);
+                    }
+                });
+                
+                // Pointer lock change handler
+                document.addEventListener('pointerlockchange', () => {
+                    this.mouseState.isLocked = document.pointerLockElement === this.renderer.domElement;
+                    if (this.mouseState.isLocked) {
+                        document.getElementById('status').textContent = 'Mouse look active - Press ESC to exit';
+                    } else {
+                        document.getElementById('status').textContent = 'Middle-click to enable mouse look, WASD to move';
+                    }
+                });
+                
+                // Mouse wheel for zoom
                 this.renderer.domElement.addEventListener('wheel', (event) => {
-                    this.camera.position.y += event.deltaY * 0.1;
-                    this.camera.position.y = Math.max(50, Math.min(500, this.camera.position.y));
+                    event.preventDefault();
+                    const zoomSpeed = 0.1;
+                    const forward = new THREE.Vector3(0, 0, -1);
+                    forward.applyQuaternion(this.camera.quaternion);
+                    
+                    if (event.deltaY > 0) {
+                        // Zoom out
+                        this.camera.position.add(forward.multiplyScalar(-zoomSpeed * 10));
+                    } else {
+                        // Zoom in
+                        this.camera.position.add(forward.multiplyScalar(zoomSpeed * 10));
+                    }
                 });
             }
             
+            /**
+             * Handle keyboard key press events
+             */
+            onKeyDown(event) {
+                switch (event.code) {
+                    case 'KeyW':
+                        this.moveState.forward = true;
+                        break;
+                    case 'KeyS':
+                        this.moveState.backward = true;
+                        break;
+                    case 'KeyA':
+                        this.moveState.left = true;
+                        break;
+                    case 'KeyD':
+                        this.moveState.right = true;
+                        break;
+                    case 'Space':
+                        event.preventDefault();
+                        this.moveState.up = true;
+                        break;
+                    case 'ShiftLeft':
+                    case 'ShiftRight':
+                        this.moveState.down = true;
+                        break;
+                    case 'Escape':
+                        if (this.mouseState.isLocked) {
+                            document.exitPointerLock();
+                        }
+                        break;
+                }
+            }
+            
+            /**
+             * Handle keyboard key release events
+             */
+            onKeyUp(event) {
+                switch (event.code) {
+                    case 'KeyW':
+                        this.moveState.forward = false;
+                        break;
+                    case 'KeyS':
+                        this.moveState.backward = false;
+                        break;
+                    case 'KeyA':
+                        this.moveState.left = false;
+                        break;
+                    case 'KeyD':
+                        this.moveState.right = false;
+                        break;
+                    case 'Space':
+                        this.moveState.up = false;
+                        break;
+                    case 'ShiftLeft':
+                    case 'ShiftRight':
+                        this.moveState.down = false;
+                        break;
+                }
+            }
+            
+            /**
+             * Request pointer lock for mouse look functionality
+             */
+            requestPointerLock() {
+                this.renderer.domElement.requestPointerLock();
+            }
+            
+            /**
+             * Update camera rotation based on mouse movement
+             */
+            updateMouseLook(event) {
+                const movementX = event.movementX || 0;
+                const movementY = event.movementY || 0;
+                
+                // Update yaw (horizontal rotation)
+                this.mouseState.yaw -= movementX * this.mouseState.sensitivity;
+                
+                // Update pitch (vertical rotation) with limits
+                this.mouseState.pitch -= movementY * this.mouseState.sensitivity;
+                this.mouseState.pitch = Math.max(
+                    -this.mouseState.maxPitch, 
+                    Math.min(this.mouseState.maxPitch, this.mouseState.pitch)
+                );
+                
+                // Apply rotation to camera
+                this.camera.rotation.order = 'YXZ';
+                this.camera.rotation.y = this.mouseState.yaw;
+                this.camera.rotation.x = this.mouseState.pitch;
+            }
+            
+            /**
+             * Update camera position based on movement state
+             */
+            updateMovement() {
+                if (!this.camera) return;
+                
+                // Determine current movement speed
+                const speed = this.moveState.down ? this.fastMovementSpeed : this.movementSpeed;
+                
+                // Calculate movement vectors
+                const forward = new THREE.Vector3(0, 0, -1);
+                const right = new THREE.Vector3(1, 0, 0);
+                const up = new THREE.Vector3(0, 1, 0);
+                
+                // Apply camera rotation to movement vectors
+                forward.applyQuaternion(this.camera.quaternion);
+                right.applyQuaternion(this.camera.quaternion);
+                
+                // Apply movement based on input state
+                if (this.moveState.forward) {
+                    this.camera.position.add(forward.clone().multiplyScalar(speed));
+                }
+                if (this.moveState.backward) {
+                    this.camera.position.add(forward.clone().multiplyScalar(-speed));
+                }
+                if (this.moveState.left) {
+                    this.camera.position.add(right.clone().multiplyScalar(-speed));
+                }
+                if (this.moveState.right) {
+                    this.camera.position.add(right.clone().multiplyScalar(speed));
+                }
+                if (this.moveState.up) {
+                    this.camera.position.add(up.clone().multiplyScalar(speed));
+                }
+                if (this.moveState.down && !this.moveState.forward && !this.moveState.backward && !this.moveState.left && !this.moveState.right) {
+                    // Only move down if shift is held without other movement
+                    this.camera.position.add(up.clone().multiplyScalar(-speed));
+                }
+                
+                // Prevent camera from going below ground level
+                this.camera.position.y = Math.max(2, this.camera.position.y);
+            }
+            
             createSampleCity() {
-                // Create a sample city layout representing Santa Cruz
+                // Create a brighter ground plane
                 const groundGeometry = new THREE.PlaneGeometry(1000, 1000);
-                const groundMaterial = new THREE.MeshLambertMaterial({ color: 0x1a1a1a });
+                const groundMaterial = new THREE.MeshLambertMaterial({ 
+                    color: 0x3a3a3a  // Lighter gray for better visibility
+                });
                 const ground = new THREE.Mesh(groundGeometry, groundMaterial);
                 ground.rotation.x = -Math.PI / 2;
                 ground.receiveShadow = true;
@@ -328,9 +530,9 @@
                 
                 const geometry = new THREE.BoxGeometry(width, height, depth);
                 const material = new THREE.MeshLambertMaterial({ 
-                    color: 0x666666,
+                    color: 0x888888,  // Lighter default color for better visibility
                     transparent: true,
-                    opacity: 0.8
+                    opacity: 0.9
                 });
                 
                 const building = new THREE.Mesh(geometry, material);
@@ -340,17 +542,17 @@
                 building.userData = { 
                     type: 'building', 
                     clan: null,
-                    originalColor: 0x666666
+                    originalColor: 0x888888  // Updated to match the new lighter color
                 };
                 
                 return building;
             }
             
             createStreets() {
-                // Main streets
+                // Main streets with better visibility
                 for (let i = -400; i <= 400; i += 100) {
                     const streetGeometry = new THREE.PlaneGeometry(800, 8);
-                    const streetMaterial = new THREE.MeshLambertMaterial({ color: 0x333333 });
+                    const streetMaterial = new THREE.MeshLambertMaterial({ color: 0x555555 }); // Lighter roads
                     const street = new THREE.Mesh(streetGeometry, streetMaterial);
                     street.rotation.x = -Math.PI / 2;
                     street.position.set(i, 0.1, 0);
@@ -437,10 +639,10 @@
             animate() {
                 requestAnimationFrame(() => this.animate());
                 
-                // Gentle camera movement for atmosphere
-                this.camera.position.x += Math.sin(Date.now() * 0.0001) * 0.1;
-                this.camera.lookAt(0, 0, 0);
+                // Update movement based on input state
+                this.updateMovement();
                 
+                // Render the scene
                 this.renderer.render(this.scene, this.camera);
             }
         }
