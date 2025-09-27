@@ -331,6 +331,33 @@ function handleHashNavigation() {
     }
 }
 
+// Function to navigate to downloads section
+function navigateToDownloads() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.section');
+    
+    // Remove active class from all nav links and sections
+    navLinks.forEach(nav => nav.classList.remove('active'));
+    sections.forEach(section => section.classList.remove('active'));
+    
+    // Add active class to downloads nav link and section
+    const downloadsNavLink = document.querySelector('[href="#downloads"]');
+    const downloadsSection = document.getElementById('downloads');
+    
+    if (downloadsNavLink) {
+        downloadsNavLink.classList.add('active');
+    }
+    if (downloadsSection) {
+        downloadsSection.classList.add('active');
+    }
+    
+    // Update URL hash
+    globalThis.history.pushState(null, null, '#downloads');
+    
+    // Smooth scroll to top
+    globalThis.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 // Regenerate particles periodically
 setInterval(() => {
     const container = document.querySelector('.particles');
