@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Creator - World of Darkness Hub by ParadoxGirl</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Choose your supernatural character type from the World of Darkness game lines - Vampire, Werewolf, Mage, and more.">
+    <meta name="keywords" content="World of Darkness, Character Creator, Vampire the Masquerade, Werewolf the Apocalypse, Mage the Ascension, RPG">
+    <meta name="author" content="ParadoxGirl">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://srparadox.github.io/WoD-Creator/pages/character-creator.html">
+    <meta property="og:title" content="Character Creator - World of Darkness Hub by ParadoxGirl">
+    <meta property="og:description" content="Choose your supernatural character type from the World of Darkness game lines">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://srparadox.github.io/WoD-Creator/pages/character-creator.html">
+    <meta property="twitter:title" content="Character Creator - World of Darkness Hub by ParadoxGirl">
+    <meta property="twitter:description" content="Choose your supernatural character type from the World of Darkness game lines">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌙</text></svg>">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="character-creator.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">
+                <a href="../index.html" style="color: inherit; text-decoration: none;">
+                    <i class="fas fa-moon"></i>
+                    World of Darkness Hub by ParadoxGirl
+                </a>
+            </h1>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                    <li><a href="../index.html#vampire" class="nav-link">Vampire</a></li>
+                    <li><a href="../index.html#werewolf" class="nav-link">Werewolf</a></li>
+                    <li><a href="../index.html#mage" class="nav-link">Mage</a></li>
+                    <li><a href="../index.html#downloads" class="nav-link">Downloads</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="character-creator-section">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">
+                        <i class="fas fa-user-plus"></i>
+                        Character Creator
+                    </h1>
+                    <p class="page-subtitle">Choose your supernatural path</p>
+                    <p class="page-description">
+                        Select from the various World of Darkness game lines to create your character.
+                        Each offers unique supernatural abilities, societies, and storytelling opportunities.
+                    </p>
+                </div>
+
+                <div class="game-lines-grid">
+                    <!-- Vampire: The Masquerade -->
+                    <div class="game-line-card active" data-url="https://srparadox.github.io/Updated-VTM-5-Creator">
+                        <div class="game-line-circle">
+                            <img src="../splatsymbols/vampiresymbol.webp" alt="Vampire Symbol" class="game-symbol">
+                        </div>
+                        <h3 class="game-title">Vampire: The Masquerade</h3>
+                        <p class="game-description">
+                            Undead predators navigating the modern nights, balancing their Beast with their humanity 
+                            in a world of political intrigue and blood.
+                        </p>
+                        <div class="status-badge available">Available</div>
+                    </div>
+
+                    <!-- Werewolf: The Apocalypse -->
+                    <div class="game-line-card active" data-url="https://srparadox.github.io/Werewolf-Character-Creator">
+                        <div class="game-line-circle">
+                            <img src="../splatsymbols/werewolfsymbol.webp" alt="Werewolf Symbol" class="game-symbol">
+                        </div>
+                        <h3 class="game-title">Werewolf: The Apocalypse</h3>
+                        <p class="game-description">
+                            Shape-changing warriors of Gaia fighting against the forces of corruption 
+                            that threaten to destroy the natural world.
+                        </p>
+                        <div class="status-badge available">Available</div>
+                    </div>
+
+                    <!-- Mage: The Ascension -->
+                    <div class="game-line-card" data-url="#">
+                        <div class="game-line-circle">
+                            <img src="../splatsymbols/magesymbol.png" alt="Mage Symbol" class="game-symbol">
+                        </div>
+                        <h3 class="game-title">Mage: The Ascension</h3>
+                        <p class="game-description">
+                            Reality-bending Awakened seeking to impose their will upon existence itself, 
+                            guided by ancient traditions and paradigms.
+                        </p>
+                        <div class="status-badge coming-soon">Coming Soon</div>
+                    </div>
+
+                    <!-- Werebat -->
+                    <div class="game-line-card" data-url="#">
+                        <div class="game-line-circle">
+                            <img src="../splatsymbols/werebatsymbol.webp" alt="Werebat Symbol" class="game-symbol">
+                        </div>
+                        <h3 class="game-title">Ananasi: The Werebats</h3>
+                        <p class="game-description">
+                            Mysterious shape-shifters dwelling in darkness, serving as scouts and spies 
+                            for the greater supernatural world.
+                        </p>
+                        <div class="status-badge coming-soon">Coming Soon</div>
+                    </div>
+
+                    <!-- Abomination -->
+                    <div class="game-line-card" data-url="#">
+                        <div class="game-line-circle">
+                            <img src="../splatsymbols/abominationsymbol.webp" alt="Abomination Symbol" class="game-symbol">
+                        </div>
+                        <h3 class="game-title">Abominations</h3>
+                        <p class="game-description">
+                            Cursed beings that violate the natural order, existing as unholy unions 
+                            of different supernatural natures.
+                        </p>
+                        <div class="status-badge coming-soon">Coming Soon</div>
+                    </div>
+
+                    <!-- Coming Soon Placeholder -->
+                    <div class="game-line-card placeholder" data-url="#">
+                        <div class="game-line-circle">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <h3 class="game-title">More Coming Soon</h3>
+                        <p class="game-description">
+                            Additional World of Darkness game lines and character creators 
+                            will be added in future updates.
+                        </p>
+                        <div class="status-badge coming-soon">In Development</div>
+                    </div>
+                </div>
+
+                <div class="instructions">
+                    <div class="instruction-card">
+                        <i class="fas fa-mouse-pointer"></i>
+                        <h4>How to Use</h4>
+                        <p>Click on any available game line circle to launch the character creator for that supernatural type.</p>
+                    </div>
+                    <div class="instruction-card">
+                        <i class="fas fa-save"></i>
+                        <h4>Save Your Progress</h4>
+                        <p>Each character creator allows you to save and export your characters for use in your chronicles.</p>
+                    </div>
+                    <div class="instruction-card">
+                        <i class="fas fa-book"></i>
+                        <h4>Complete Tools</h4>
+                        <p>Our creators include all official clans, tribes, traditions, and character options from the sourcebooks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 World of Darkness Hub by ParadoxGirl. Created for the storytelling community.</p>
+            <p class="disclaimer">
+                World of Darkness, Vampire: The Masquerade, Werewolf: The Apocalypse, and Mage: The Ascension 
+                are trademarks of Modiphius Entertainment. This is an unofficial fan site.
+            </p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="character-creator.js"></script>
+</body>
+</html>

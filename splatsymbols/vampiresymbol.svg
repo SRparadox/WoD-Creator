@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="60" fill="none" stroke="#8b0000" stroke-width="4"/>
+  <path d="M64 20 L80 50 L64 40 L48 50 Z" fill="#8b0000"/>
+  <circle cx="64" cy="70" r="8" fill="#8b0000"/>
+  <path d="M40 90 Q64 110 88 90" stroke="#8b0000" stroke-width="3" fill="none"/>
+  <text x="64" y="100" text-anchor="middle" font-family="serif" font-size="10" fill="#8b0000">VAMPIRE</text>
+</svg>

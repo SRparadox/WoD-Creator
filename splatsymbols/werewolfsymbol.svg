@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="60" fill="none" stroke="#556b2f" stroke-width="4"/>
+  <path d="M64 15 L85 45 L64 35 L43 45 Z" fill="#556b2f"/>
+  <path d="M30 64 L64 50 L98 64 L64 78 Z" fill="#556b2f"/>
+  <circle cx="64" cy="64" r="12" fill="none" stroke="#556b2f" stroke-width="2"/>
+  <text x="64" y="110" text-anchor="middle" font-family="serif" font-size="9" fill="#556b2f">WEREWOLF</text>
+</svg>
