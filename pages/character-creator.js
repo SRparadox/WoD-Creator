@@ -7,10 +7,21 @@ document.addEventListener('DOMContentLoaded', function() {
 function initCharacterCreatorPage() {
     const gameLineCards = document.querySelectorAll('.game-line-card');
     
-    gameLineCards.forEach(card => {
+    console.log(`Found ${gameLineCards.length} game line cards`);
+    
+    gameLineCards.forEach((card, index) => {
+        const url = card.dataset.url;
+        const isActive = card.classList.contains('active');
+        console.log(`Card ${index}: ${card.querySelector('.game-title')?.textContent} - Active: ${isActive} - URL: ${url}`);
+        
         card.addEventListener('click', handleGameLineClick);
         card.addEventListener('mouseenter', handleCardHover);
         card.addEventListener('mouseleave', handleCardLeave);
+        
+        // Ensure active cards have proper styling
+        if (isActive && url && url !== '#') {
+            card.style.cursor = 'pointer';
+        }
     });
     
     // Add keyboard navigation
@@ -27,6 +38,9 @@ function handleGameLineClick(event) {
     const card = event.currentTarget;
     const url = card.dataset.url;
     const isActive = card.classList.contains('active');
+    const gameTitle = card.querySelector('.game-title')?.textContent;
+    
+    console.log(`Clicked on ${gameTitle} - Active: ${isActive} - URL: ${url}`);
     
     if (!isActive || !url || url === '#') {
         // Show coming soon message
@@ -44,8 +58,9 @@ function handleGameLineClick(event) {
     showLoadingState(card);
     
     // Navigate to the character creator
+    console.log(`Navigating to: ${url}`);
     setTimeout(() => {
-        window.location.href = url;
+        globalThis.location.href = url;
         hideLoadingState(card);
     }, 500);
 }
@@ -168,7 +183,6 @@ function createSparkleEffect(element) {
 
 function handleKeyboardNavigation(event) {
     const gameCards = Array.from(document.querySelectorAll('.game-line-card'));
-    const activeCards = gameCards.filter(card => card.classList.contains('active'));
     
     if (event.key === 'Enter' || event.key === ' ') {
         const focusedCard = document.activeElement;
@@ -295,7 +309,7 @@ function createFallbackIcon(gameType) {
 }
 
 // Add tracking for analytics (if needed)
-function trackCharacterCreatorClick(gameType) {
+function _trackCharacterCreatorClick(gameType) {
     // Add analytics tracking here if needed
     console.log(`Character creator clicked: ${gameType}`);
 }

@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 // Smooth scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                globalThis.scrollTo({ top: 0, behavior: 'smooth' });
             }
             // For external links, let them navigate normally
         });
@@ -150,7 +150,7 @@ function addTypingEffect() {
 }
 
 // Add hover sound effects (optional - requires audio files)
-function addHoverSounds() {
+function _addHoverSounds() {
     const buttons = document.querySelectorAll('.btn');
     const hoverSound = new Audio('sounds/hover.mp3'); // You'd need to add this file
     
@@ -165,8 +165,8 @@ function addHoverSounds() {
 }
 
 // Theme switcher (for future implementation)
-function initThemeSwitcher() {
-    const themes = {
+function _initThemeSwitcher() {
+    const _themes = {
         vampire: {
             primary: '#8b0000',
             secondary: '#b8860b',
@@ -193,7 +193,7 @@ function enhanceSmoothScrolling() {
 }
 
 // Add loading screen (optional)
-function addLoadingScreen() {
+function _addLoadingScreen() {
     const loading = document.createElement('div');
     loading.className = 'loading-screen';
     loading.innerHTML = `
@@ -219,7 +219,7 @@ function addLoadingScreen() {
     document.body.appendChild(loading);
     
     // Remove loading screen after page loads
-    window.addEventListener('load', () => {
+    globalThis.addEventListener('load', () => {
         setTimeout(() => {
             loading.style.opacity = '0';
             setTimeout(() => {
@@ -282,7 +282,7 @@ function addInteractiveElements() {
 document.addEventListener('DOMContentLoaded', function() {
     enhanceSmoothScrolling();
     addInteractiveElements();
-    // addLoadingScreen(); // Uncomment if you want a loading screen
+    // _addLoadingScreen(); // Uncomment if you want a loading screen
 });
 
 // Add keyboard navigation
@@ -308,7 +308,7 @@ document.addEventListener('keydown', function(e) {
 
 // Handle hash navigation from URL
 function handleHashNavigation() {
-    const hash = window.location.hash;
+    const hash = globalThis.location.hash;
     if (hash) {
         const targetId = hash.substring(1);
         const navLinks = document.querySelectorAll('.nav-link');
