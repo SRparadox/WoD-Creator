@@ -1,4 +1,4 @@
-# World of Darkness Hub
+# World of Darkness Hub by ParadoxGirl
 
 A comprehensive website hub connecting various World of Darkness related tools, resources, and interactive experiences for Vampire: The Masquerade, Werewolf: The Apocalypse, Mage: The Ascension, and other World of Darkness games.
 
@@ -89,6 +89,7 @@ WoD-Creator/
 - **Interactive Navigation**: Smooth transitions between sections
 - **Animated Elements**: Floating particles and hover effects
 - **Modern Typography**: Uses Cinzel and Crimson Text fonts
+- **Character Creator**: Advanced tools for creating characters across all game lines
 - **Color Coding**: Different color schemes for each game line:
   - Vampire: Deep reds and golds
   - Werewolf: Forest greens

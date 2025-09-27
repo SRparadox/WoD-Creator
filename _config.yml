@@ -1,5 +1,5 @@
 # Jekyll configuration for GitHub Pages
-title: World of Darkness Hub
+title: World of Darkness Hub by ParadoxGirl
 description: A comprehensive website hub for World of Darkness tools and resources
 url: "https://srparadox.github.io"
 baseurl: "/WoD-Creator"
@@ -35,13 +35,13 @@ defaults:
       layout: "default"
 
 # Custom variables
-author: SRparadox
+author: ParadoxGirl
 social:
   github: SRparadox
 
 # SEO settings
 logo: /assets/images/logo.png
 social:
-  name: World of Darkness Hub
+  name: World of Darkness Hub by ParadoxGirl
   links:
     - https://github.com/SRparadox/WoD-Creator
