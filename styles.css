@@ -163,6 +163,41 @@ body {
     color: #e8e3d8;
 }
 
+.hero-cta {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.btn-hero {
+    background: linear-gradient(135deg, #dc143c, #8b0000);
+    color: #ffffff;
+    border: 2px solid #dc143c;
+    font-size: 1.1rem;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(220, 20, 60, 0.3);
+}
+
+.btn-hero:hover {
+    background: linear-gradient(135deg, #ff1744, #dc143c);
+    border-color: #ff1744;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(220, 20, 60, 0.5);
+    color: #ffffff;
+}
+
+.btn-hero i {
+    font-size: 1.3rem;
+}
+
 /* Feature Cards */
 .features-grid {
     display: grid;
@@ -408,6 +443,11 @@ body {
         font-size: 2.5rem;
     }
     
+    .btn-hero {
+        font-size: 1rem;
+        padding: 0.8rem 2rem;
+    }
+    
     .section-title {
         font-size: 2rem;
         flex-direction: column;
@@ -433,6 +473,14 @@ body {
     .nav ul {
         flex-wrap: wrap;
         justify-content: center;
+    }
+    
+    .btn-hero {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
     }
     
     .main {

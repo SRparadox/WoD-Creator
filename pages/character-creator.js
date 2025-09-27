@@ -35,6 +35,9 @@ function initCharacterCreatorPage() {
 }
 
 function handleGameLineClick(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    
     const card = event.currentTarget;
     const url = card.dataset.url;
     const isActive = card.classList.contains('active');
@@ -57,12 +60,19 @@ function handleGameLineClick(event) {
     // Show loading state
     showLoadingState(card);
     
-    // Navigate to the character creator
+    // Navigate to the character creator immediately (remove delay)
     console.log(`Navigating to: ${url}`);
-    setTimeout(() => {
-        globalThis.location.href = url;
+    try {
+        globalThis.open(url, '_blank');
         hideLoadingState(card);
-    }, 500);
+    } catch (error) {
+        console.error('Failed to open URL:', error);
+        // Fallback to same window navigation
+        setTimeout(() => {
+            globalThis.location.href = url;
+            hideLoadingState(card);
+        }, 100);
+    }
 }
 
 function handleCardHover(event) {
