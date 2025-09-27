@@ -1,0 +1,47 @@
+# Jekyll configuration for GitHub Pages
+title: World of Darkness Hub
+description: A comprehensive website hub for World of Darkness tools and resources
+url: "https://srparadox.github.io"
+baseurl: "/WoD-Creator"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - .gitignore
+  - .github/
+  - downloads/README.md
+  - tools/README.md
+
+# Include files that start with underscores
+include:
+  - _pages
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Default layouts
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Custom variables
+author: SRparadox
+social:
+  github: SRparadox
+
+# SEO settings
+logo: /assets/images/logo.png
+social:
+  name: World of Darkness Hub
+  links:
+    - https://github.com/SRparadox/WoD-Creator
