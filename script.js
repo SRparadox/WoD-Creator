@@ -3,22 +3,34 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
 
+    // Handle hash navigation from URL
+    handleHashNavigation();
+
     // Navigation click handler
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
+            const href = this.getAttribute('href');
             
-            // Remove active class from all nav links and sections
-            navLinks.forEach(nav => nav.classList.remove('active'));
-            sections.forEach(section => section.classList.remove('active'));
-            
-            // Add active class to clicked nav link and target section
-            this.classList.add('active');
-            document.getElementById(targetId).classList.add('active');
-            
-            // Smooth scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // If it's a hash link, handle it specially
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                
+                // Remove active class from all nav links and sections
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                sections.forEach(section => section.classList.remove('active'));
+                
+                // Add active class to clicked nav link and target section
+                this.classList.add('active');
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+                
+                // Smooth scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            // For external links, let them navigate normally
         });
     });
 
@@ -293,6 +305,31 @@ document.addEventListener('keydown', function(e) {
         if (targetNavLink) targetNavLink.click();
     }
 });
+
+// Handle hash navigation from URL
+function handleHashNavigation() {
+    const hash = window.location.hash;
+    if (hash) {
+        const targetId = hash.substring(1);
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section');
+        
+        // Remove active class from all nav links and sections
+        navLinks.forEach(nav => nav.classList.remove('active'));
+        sections.forEach(section => section.classList.remove('active'));
+        
+        // Find and activate the target section
+        const targetSection = document.getElementById(targetId);
+        const targetNavLink = document.querySelector(`[href="#${targetId}"]`);
+        
+        if (targetSection) {
+            targetSection.classList.add('active');
+        }
+        if (targetNavLink) {
+            targetNavLink.classList.add('active');
+        }
+    }
+}
 
 // Regenerate particles periodically
 setInterval(() => {

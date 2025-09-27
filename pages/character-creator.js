@@ -45,7 +45,7 @@ function handleGameLineClick(event) {
     
     // Navigate to the character creator
     setTimeout(() => {
-        window.open(url, '_blank');
+        window.location.href = url;
         hideLoadingState(card);
     }, 500);
 }
