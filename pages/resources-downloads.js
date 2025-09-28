@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add smooth scroll behavior for navigation links
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function(_e) {
             if (this.getAttribute('href').startsWith('../index.html#')) {
                 // Let the browser handle navigation to index.html with hash
                 return;

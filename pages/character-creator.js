@@ -154,7 +154,7 @@ function showComingSoonMessage(card) {
     }, 500);
 }
 
-function showLoadingState(card) {
+function _showLoadingState(card) {
     const circle = card.querySelector('.game-line-circle');
     const originalContent = circle.innerHTML;
     
@@ -163,7 +163,7 @@ function showLoadingState(card) {
     circle.style.animation = 'pulse 1s infinite';
 }
 
-function hideLoadingState(card) {
+function _hideLoadingState(card) {
     const circle = card.querySelector('.game-line-circle');
     const originalContent = circle.dataset.originalContent;
     
