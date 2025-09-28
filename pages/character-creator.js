@@ -43,17 +43,23 @@ function initCharacterCreatorPage() {
 }
 
 function handleGameLineClick(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    
     const card = event.currentTarget;
     const url = card.dataset.url;
     const isActive = card.classList.contains('active');
     const gameTitle = card.querySelector('.game-title')?.textContent;
+    const hasOnclick = card.hasAttribute('onclick');
     
-    console.log(`Clicked on ${gameTitle} - Active: ${isActive} - URL: ${url}`);
-    console.log(`Card classes:`, card.className);
-    console.log(`Data URL:`, card.dataset.url);
+    console.log(`Clicked on ${gameTitle} - Active: ${isActive} - URL: ${url} - Has onclick: ${hasOnclick}`);
+    
+    // If the card has an inline onclick handler and is active, let it handle the click
+    if (isActive && hasOnclick && url && url !== '#') {
+        console.log(`Card ${gameTitle} has inline onclick - letting it handle the click`);
+        return; // Don't prevent default, let the inline onclick work
+    }
+    
+    // Only handle clicks for inactive cards or cards without inline onclick
+    event.preventDefault();
+    event.stopPropagation();
     
     if (!isActive || !url || url === '#') {
         console.log(`Card ${gameTitle} not active or no URL - showing coming soon`);
