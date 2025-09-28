@@ -52,12 +52,16 @@ function handleGameLineClick(event) {
     const gameTitle = card.querySelector('.game-title')?.textContent;
     
     console.log(`Clicked on ${gameTitle} - Active: ${isActive} - URL: ${url}`);
+    console.log(`Card classes:`, card.className);
+    console.log(`Data URL:`, card.dataset.url);
     
     if (!isActive || !url || url === '#') {
-        // Show coming soon message
+        console.log(`Card ${gameTitle} not active or no URL - showing coming soon`);
         showComingSoonMessage(card);
         return;
     }
+    
+    console.log(`Processing click for active card: ${gameTitle}`);
     
     // Add click animation
     card.style.transform = 'scale(0.95)';
@@ -65,21 +69,20 @@ function handleGameLineClick(event) {
         card.style.transform = '';
     }, 150);
     
-    // Show loading state
-    showLoadingState(card);
-    
-    // Navigate to the character creator immediately (remove delay)
-    console.log(`Navigating to: ${url}`);
+    // Navigate to the character creator immediately
+    console.log(`Opening URL: ${url}`);
     try {
-        globalThis.open(url, '_blank');
-        hideLoadingState(card);
+        const newWindow = globalThis.open(url, '_blank');
+        if (!newWindow) {
+            console.warn('Popup blocked, trying fallback navigation');
+            globalThis.location.href = url;
+        } else {
+            console.log('Successfully opened new window/tab');
+        }
     } catch (error) {
         console.error('Failed to open URL:', error);
         // Fallback to same window navigation
-        setTimeout(() => {
-            globalThis.location.href = url;
-            hideLoadingState(card);
-        }, 100);
+        globalThis.location.href = url;
     }
 }
 
