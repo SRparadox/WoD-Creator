@@ -12,15 +12,23 @@ function initCharacterCreatorPage() {
     gameLineCards.forEach((card, index) => {
         const url = card.dataset.url;
         const isActive = card.classList.contains('active');
-        console.log(`Card ${index}: ${card.querySelector('.game-title')?.textContent} - Active: ${isActive} - URL: ${url}`);
+        const gameTitle = card.querySelector('.game-title')?.textContent;
+        console.log(`Card ${index}: ${gameTitle} - Active: ${isActive} - URL: ${url}`);
         
+        // Remove any existing event listeners and add fresh ones
+        card.removeEventListener('click', handleGameLineClick);
         card.addEventListener('click', handleGameLineClick);
         card.addEventListener('mouseenter', handleCardHover);
         card.addEventListener('mouseleave', handleCardLeave);
         
-        // Ensure active cards have proper styling
+        // Ensure active cards have proper styling and behavior
         if (isActive && url && url !== '#') {
             card.style.cursor = 'pointer';
+            card.style.pointerEvents = 'auto';
+            console.log(`Card ${gameTitle} is set up as active and clickable`);
+        } else {
+            card.style.cursor = 'default';
+            card.style.pointerEvents = 'auto';
         }
     });
     
