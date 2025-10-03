@@ -880,6 +880,134 @@ body {
     100% { transform: translateY(0px) translateX(0px); }
 }
 
+/* Hunter Theme Overrides - Tactical Depot */
+.hunter-theme {
+    position: relative;
+}
+
+.hunter-theme::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(255, 140, 0, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(184, 134, 11, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hunter-title {
+    color: #ff8c00 !important;
+    text-shadow: 
+        0 0 5px #ff8c00,
+        0 0 10px #ffa500,
+        0 0 15px #b8860b !important;
+    font-family: 'Cinzel', serif;
+}
+
+.hunter-shelves {
+    position: relative;
+    z-index: 1;
+}
+
+.hunter-shelf {
+    background: linear-gradient(135deg, rgba(40, 40, 40, 0.95), rgba(25, 25, 25, 0.95)) !important;
+    border: 2px solid rgba(255, 140, 0, 0.3) !important;
+    box-shadow: 
+        0 4px 15px rgba(184, 134, 11, 0.1),
+        inset 0 1px 0 rgba(139, 69, 19, 0.1) !important;
+}
+
+.hunter-shelf:hover {
+    border-color: #ff8c00 !important;
+    box-shadow: 
+        0 8px 25px rgba(255, 140, 0, 0.2),
+        inset 0 1px 0 rgba(139, 69, 19, 0.2) !important;
+}
+
+.hunter-shelf .shelf-title {
+    color: #ff8c00 !important;
+    text-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
+}
+
+.hunter-shelf .shelf-icon {
+    color: #b8860b !important;
+}
+
+.hunter-item {
+    background: rgba(30, 30, 30, 0.4) !important;
+    border: 1px solid rgba(255, 140, 0, 0.2) !important;
+}
+
+.hunter-item:hover {
+    border-color: rgba(255, 140, 0, 0.4) !important;
+    background: rgba(255, 140, 0, 0.05) !important;
+}
+
+.hunter-formula {
+    background: rgba(255, 140, 0, 0.1) !important;
+    border: 1px solid rgba(184, 134, 11, 0.3) !important;
+    color: #ff8c00 !important;
+}
+
+.hunter-dot {
+    background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(25, 25, 25, 0.9)) !important;
+    border: 2px solid rgba(255, 140, 0, 0.3) !important;
+    color: #ff8c00 !important;
+}
+
+.hunter-dot:hover {
+    border-color: #ff8c00 !important;
+    background: linear-gradient(135deg, rgba(255, 140, 0, 0.2), rgba(184, 134, 11, 0.2)) !important;
+    box-shadow: 0 0 10px rgba(255, 140, 0, 0.3) !important;
+}
+
+.hunter-btn {
+    background: linear-gradient(135deg, rgba(255, 140, 0, 0.8), rgba(184, 134, 11, 0.8)) !important;
+    border: 1px solid #ff8c00 !important;
+}
+
+.hunter-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 165, 0, 1), rgba(184, 134, 11, 1)) !important;
+    box-shadow: 0 0 10px rgba(255, 140, 0, 0.3) !important;
+}
+
+/* Hunter-specific shelf effects */
+.hunter-shelf::before {
+    background: linear-gradient(90deg, transparent, rgba(255, 140, 0, 0.1), transparent) !important;
+}
+
+/* Tactical equipment floating animation */
+.hunter-theme::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 140, 0, 0.3), transparent),
+        radial-gradient(1px 1px at 40px 70px, rgba(184, 134, 11, 0.2), transparent),
+        radial-gradient(3px 3px at 90px 40px, rgba(255, 165, 0, 0.2), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(139, 69, 19, 0.2), transparent);
+    background-repeat: repeat;
+    background-size: 160px 110px;
+    animation: tacticalGear 18s linear infinite;
+    pointer-events: none;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+@keyframes tacticalGear {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(180deg); }
+    100% { transform: translateY(0px) rotate(360deg); }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .shelves-container {

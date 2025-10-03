@@ -47,10 +47,9 @@
                         <img src="../splatsymbols/vampiresymbol.webp" alt="Vampire" class="tab-icon">
                         <span>Vampire</span>
                     </button>
-                    <button class="splat-tab disabled" data-splat="hunter" onclick="switchSplat('hunter')">
+                    <button class="splat-tab" data-splat="hunter" onclick="switchSplat('hunter')">
                         <img src="../splatsymbols/HuntersSymbol.webp" alt="Hunter" class="tab-icon">
                         <span>Hunter</span>
-                        <div class="coming-soon-badge">Soon</div>
                     </button>
                     <button class="splat-tab" data-splat="werewolf" onclick="switchSplat('werewolf')">
                         <img src="../splatsymbols/werewolfsymbol.webp" alt="Werewolf" class="tab-icon">
@@ -294,6 +293,134 @@
                                         <div class="dot-level" data-level="4" data-cost="40" onclick="addBloodPotencyToCart(4, 40)">●●●●</div>
                                         <div class="dot-level" data-level="5" data-cost="50" onclick="addBloodPotencyToCart(5, 50)">●●●●●</div>
                                         <div class="dot-level" data-level="6" data-cost="60" onclick="addBloodPotencyToCart(6, 60)">●●●●●●</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hunter Shop Content -->
+            <div id="hunter-shop" class="shop-content hunter-theme">
+                <h2 class="shop-title hunter-title">The Hunter's Arsenal</h2>
+                <div class="shelves-container hunter-shelves">
+                    <!-- Left Column -->
+                    <div class="shelves-column left">
+                        <!-- Attributes -->
+                        <div class="shelf hunter-shelf" id="hunter-attributes-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Physical Training</h3>
+                                <i class="fas fa-dumbbell shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item hunter-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Attribute Increase</span>
+                                        <span class="trait-formula hunter-formula">New Level × 5</span>
+                                    </div>
+                                    <div class="trait-description">Enhance your Physical, Social, or Mental capabilities through rigorous training</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level hunter-dot" data-level="1" data-cost="5" onclick="addHunterAttributeToCart(1, 5)">●</div>
+                                        <div class="dot-level hunter-dot" data-level="2" data-cost="10" onclick="addHunterAttributeToCart(2, 10)">●●</div>
+                                        <div class="dot-level hunter-dot" data-level="3" data-cost="15" onclick="addHunterAttributeToCart(3, 15)">●●●</div>
+                                        <div class="dot-level hunter-dot" data-level="4" data-cost="20" onclick="addHunterAttributeToCart(4, 20)">●●●●</div>
+                                        <div class="dot-level hunter-dot" data-level="5" data-cost="25" onclick="addHunterAttributeToCart(5, 25)">●●●●●</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skills -->
+                        <div class="shelf hunter-shelf" id="hunter-skills-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Field Skills</h3>
+                                <i class="fas fa-crosshairs shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item hunter-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Skill Increase</span>
+                                        <span class="trait-formula hunter-formula">New Level × 3</span>
+                                    </div>
+                                    <div class="trait-description">Master combat, investigation, and survival techniques</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level hunter-dot" data-level="1" data-cost="3" onclick="addHunterSkillToCart(1, 3)">●</div>
+                                        <div class="dot-level hunter-dot" data-level="2" data-cost="6" onclick="addHunterSkillToCart(2, 6)">●●</div>
+                                        <div class="dot-level hunter-dot" data-level="3" data-cost="9" onclick="addHunterSkillToCart(3, 9)">●●●</div>
+                                        <div class="dot-level hunter-dot" data-level="4" data-cost="12" onclick="addHunterSkillToCart(4, 12)">●●●●</div>
+                                        <div class="dot-level hunter-dot" data-level="5" data-cost="15" onclick="addHunterSkillToCart(5, 15)">●●●●●</div>
+                                    </div>
+                                </div>
+                                <div class="trait-item hunter-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Specialty</span>
+                                        <span class="trait-formula hunter-formula">3 XP</span>
+                                    </div>
+                                    <div class="trait-description">Develop specialized tactical expertise</div>
+                                    <button class="single-purchase-btn hunter-btn" onclick="addToCart({name: 'Hunter Specialty', cost: 3, category: 'Skills'})">Purchase (3 XP)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Edges -->
+                        <div class="shelf hunter-shelf" id="hunter-edges-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Hunter's Edge</h3>
+                                <i class="fas fa-bolt shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item hunter-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Edge</span>
+                                        <span class="trait-formula hunter-formula">7 XP</span>
+                                    </div>
+                                    <div class="trait-description">Acquire supernatural abilities and divine powers for the hunt</div>
+                                    <button class="single-purchase-btn hunter-btn" onclick="addToCart({name: 'Edge', cost: 7, category: 'Edges'})">Purchase (7 XP)</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="shelves-column right">
+                        <!-- Perks -->
+                        <div class="shelf hunter-shelf" id="hunter-perks-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Tactical Perks</h3>
+                                <i class="fas fa-medal shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item hunter-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Perk</span>
+                                        <span class="trait-formula hunter-formula">3 XP</span>
+                                    </div>
+                                    <div class="trait-description">Gain special operational advantages and tactical benefits</div>
+                                    <button class="single-purchase-btn hunter-btn" onclick="addToCart({name: 'Perk', cost: 3, category: 'Perks'})">Purchase (3 XP)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Advantages -->
+                        <div class="shelf hunter-shelf" id="hunter-advantages-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Combat Assets</h3>
+                                <i class="fas fa-shield-alt shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item hunter-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Advantage</span>
+                                        <span class="trait-formula hunter-formula">3 XP per dot</span>
+                                    </div>
+                                    <div class="trait-description">Acquire equipment, contacts, and operational resources</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level hunter-dot" data-level="1" data-cost="3" onclick="addHunterAdvantageToCart(1, 3)">●</div>
+                                        <div class="dot-level hunter-dot" data-level="2" data-cost="6" onclick="addHunterAdvantageToCart(2, 6)">●●</div>
+                                        <div class="dot-level hunter-dot" data-level="3" data-cost="9" onclick="addHunterAdvantageToCart(3, 9)">●●●</div>
+                                        <div class="dot-level hunter-dot" data-level="4" data-cost="12" onclick="addHunterAdvantageToCart(4, 12)">●●●●</div>
+                                        <div class="dot-level hunter-dot" data-level="5" data-cost="15" onclick="addHunterAdvantageToCart(5, 15)">●●●●●</div>
                                     </div>
                                 </div>
                             </div>

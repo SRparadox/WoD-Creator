@@ -69,6 +69,9 @@ function updateShopHeader(splat) {
     } else if (splat === 'werewolf') {
         shopLogo.textContent = 'The Spirit Grove';
         shopTagline.textContent = 'Where Nature\'s Fury Awaits';
+    } else if (splat === 'hunter') {
+        shopLogo.textContent = 'The Hunter\'s Arsenal';
+        shopTagline.textContent = 'Where Faith Meets Steel';
     }
     // Add more splats as needed
 }
@@ -462,6 +465,37 @@ function addWerewolfCaernToCart(level, cost) {
         cost: cost,
         category: 'Caern Value',
         level: level
+    };
+    addToCart(item);
+}
+
+// Hunter-specific trait addition functions
+function addHunterAttributeToCart(level, cost) {
+    const item = {
+        name: `Hunter Attribute Level ${level}`,
+        cost: cost,
+        category: 'Hunter Attributes',
+        level: level
+    };
+    addToCart(item);
+}
+
+function addHunterSkillToCart(level, cost) {
+    const item = {
+        name: `Hunter Skill Level ${level}`,
+        cost: cost,
+        category: 'Hunter Skills',
+        level: level
+    };
+    addToCart(item);
+}
+
+function addHunterAdvantageToCart(dots, cost) {
+    const item = {
+        name: `Hunter Advantage (${dots} dot${dots > 1 ? 's' : ''})`,
+        cost: cost,
+        category: 'Hunter Advantages',
+        level: dots
     };
     addToCart(item);
 }
