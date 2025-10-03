@@ -49,3 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Function to open XP Shop
+function openXPShop() {
+    window.location.href = 'xp-shop.html';
+}

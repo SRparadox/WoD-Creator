@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XP Shop - World of Darkness Hub by ParadoxGirl</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Experience point calculator and shop for World of Darkness character advancement.">
+    <meta name="keywords" content="World of Darkness, XP Calculator, Experience Points, Character Advancement, VTM">
+    <meta name="author" content="ParadoxGirl">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌙</text></svg>">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="xp-shop.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="shop-background"></div>
+    <div class="neon-overlay"></div>
+    
+    <header class="shop-header">
+        <div class="container">
+            <div class="shop-logo">
+                <i class="fas fa-wine-glass-alt"></i>
+                <h1>The Crimson Exchange</h1>
+                <p class="shop-tagline">Where Power Has Its Price</p>
+            </div>
+            <div class="shop-nav">
+                <button class="nav-btn" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Tools
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="shop-main">
+        <div class="container">
+            <!-- Splat Selection -->
+            <div class="splat-selector">
+                <h2 class="selector-title">Choose Your Path</h2>
+                <div class="splat-tabs">
+                    <button class="splat-tab active" data-splat="vampire" onclick="switchSplat('vampire')">
+                        <img src="../splatsymbols/vampiresymbol.webp" alt="Vampire" class="tab-icon">
+                        <span>Vampire</span>
+                    </button>
+                    <button class="splat-tab disabled" data-splat="hunter" onclick="switchSplat('hunter')">
+                        <img src="../splatsymbols/HuntersSymbol.webp" alt="Hunter" class="tab-icon">
+                        <span>Hunter</span>
+                        <div class="coming-soon-badge">Soon</div>
+                    </button>
+                    <button class="splat-tab disabled" data-splat="werewolf" onclick="switchSplat('werewolf')">
+                        <img src="../splatsymbols/werewolfsymbol.webp" alt="Werewolf" class="tab-icon">
+                        <span>Werewolf</span>
+                        <div class="coming-soon-badge">Soon</div>
+                    </button>
+                    <button class="splat-tab disabled" data-splat="mage" onclick="switchSplat('mage')">
+                        <img src="../splatsymbols/magesymbol.png" alt="Mage" class="tab-icon">
+                        <span>Mage</span>
+                        <div class="coming-soon-badge">Soon</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- XP Calculator Display -->
+            <div class="xp-calculator">
+                <div class="calculator-display">
+                    <div class="current-xp">
+                        <h3>Available XP</h3>
+                        <input type="number" id="currentXP" value="0" min="0" class="xp-input">
+                    </div>
+                    <div class="cart-total">
+                        <h3>Cart Total</h3>
+                        <span id="cartTotal" class="total-amount">0 XP</span>
+                    </div>
+                    <div class="remaining-xp">
+                        <h3>Remaining</h3>
+                        <span id="remainingXP" class="remaining-amount">0 XP</span>
+                    </div>
+                </div>
+                <button class="clear-cart-btn" onclick="clearCart()">
+                    <i class="fas fa-trash"></i>
+                    Clear Cart
+                </button>
+            </div>
+
+            <!-- Vampire Shop Content -->
+            <div id="vampire-shop" class="shop-content active">
+                <h2 class="shop-title">The Vampire's Arsenal</h2>
+                <div class="shelves-container">
+                    <!-- Left Column -->
+                    <div class="shelves-column left">
+                        <!-- Shelf 1 -->
+                        <div class="shelf" id="shelf-1">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Shelf 1</h3>
+                                <i class="fas fa-wine-bottle shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <p class="shelf-placeholder">Coming Soon...</p>
+                            </div>
+                        </div>
+
+                        <!-- Shelf 2 -->
+                        <div class="shelf" id="shelf-2">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Shelf 2</h3>
+                                <i class="fas fa-gem shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <p class="shelf-placeholder">Coming Soon...</p>
+                            </div>
+                        </div>
+
+                        <!-- Shelf 3 -->
+                        <div class="shelf" id="shelf-3">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Shelf 3</h3>
+                                <i class="fas fa-scroll shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <p class="shelf-placeholder">Coming Soon...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="shelves-column right">
+                        <!-- Shelf 4 -->
+                        <div class="shelf" id="shelf-4">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Shelf 4</h3>
+                                <i class="fas fa-eye shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <p class="shelf-placeholder">Coming Soon...</p>
+                            </div>
+                        </div>
+
+                        <!-- Shelf 5 -->
+                        <div class="shelf" id="shelf-5">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Shelf 5</h3>
+                                <i class="fas fa-heart shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <p class="shelf-placeholder">Coming Soon...</p>
+                            </div>
+                        </div>
+
+                        <!-- Shelf 6 -->
+                        <div class="shelf" id="shelf-6">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Shelf 6</h3>
+                                <i class="fas fa-shield-alt shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <p class="shelf-placeholder">Coming Soon...</p>
+                            </div>
+                        </div>
+
+                        <!-- Shelf 7 -->
+                        <div class="shelf" id="shelf-7">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Shelf 7</h3>
+                                <i class="fas fa-star shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <p class="shelf-placeholder">Coming Soon...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shopping Cart -->
+            <div class="shopping-cart">
+                <h3 class="cart-title">
+                    <i class="fas fa-shopping-cart"></i>
+                    Your Selections
+                </h3>
+                <div id="cartItems" class="cart-items">
+                    <p class="empty-cart">Your cart is empty</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="xp-shop.js"></script>
+</body>
+</html>
