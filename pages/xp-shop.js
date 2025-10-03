@@ -242,3 +242,94 @@ window.XPShop = {
     populateShelf,
     updateCalculator
 };
+
+// Specific trait addition functions
+function addAttributeToCart(level, cost) {
+    const item = {
+        name: `Attribute Level ${level}`,
+        cost: cost,
+        category: 'Attributes',
+        level: level
+    };
+    addToCart(item);
+}
+
+function addSkillToCart(level, cost) {
+    const item = {
+        name: `Skill Level ${level}`,
+        cost: cost,
+        category: 'Skills',
+        level: level
+    };
+    addToCart(item);
+}
+
+function addClanDisciplineToCart(level, cost) {
+    const item = {
+        name: `Clan Discipline Level ${level}`,
+        cost: cost,
+        category: 'Clan Disciplines',
+        level: level
+    };
+    addToCart(item);
+}
+
+function addOtherDisciplineToCart(level, cost) {
+    const item = {
+        name: `Out-of-Clan Discipline Level ${level}`,
+        cost: cost,
+        category: 'Other Disciplines',
+        level: level
+    };
+    addToCart(item);
+}
+
+function addCaitiffDisciplineToCart(level, cost) {
+    const item = {
+        name: `Caitiff Discipline Level ${level}`,
+        cost: cost,
+        category: 'Caitiff Disciplines',
+        level: level
+    };
+    addToCart(item);
+}
+
+function addRitualToCart(level, cost) {
+    const item = {
+        name: `Blood Sorcery Ritual Level ${level}`,
+        cost: cost,
+        category: 'Blood Sorcery',
+        level: level
+    };
+    addToCart(item);
+}
+
+function addFormulaToCart(level, cost) {
+    const item = {
+        name: `Thin Blood Formula Level ${level}`,
+        cost: cost,
+        category: 'Thin Blood Alchemy',
+        level: level
+    };
+    addToCart(item);
+}
+
+function addAdvantageToCart(dots, cost) {
+    const item = {
+        name: `Advantage (${dots} dot${dots > 1 ? 's' : ''})`,
+        cost: cost,
+        category: 'Advantages',
+        level: dots
+    };
+    addToCart(item);
+}
+
+function addBloodPotencyToCart(level, cost) {
+    const item = {
+        name: `Blood Potency Level ${level}`,
+        cost: cost,
+        category: 'Blood Potency',
+        level: level
+    };
+    addToCart(item);
+}

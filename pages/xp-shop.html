@@ -93,83 +93,211 @@
                 <div class="shelves-container">
                     <!-- Left Column -->
                     <div class="shelves-column left">
-                        <!-- Shelf 1 -->
-                        <div class="shelf" id="shelf-1">
+                        <!-- Attributes -->
+                        <div class="shelf" id="attributes-shelf">
                             <div class="shelf-header">
-                                <h3 class="shelf-title">Shelf 1</h3>
-                                <i class="fas fa-wine-bottle shelf-icon"></i>
+                                <h3 class="shelf-title">Attributes</h3>
+                                <i class="fas fa-fist-raised shelf-icon"></i>
                             </div>
                             <div class="shelf-content">
-                                <p class="shelf-placeholder">Coming Soon...</p>
+                                <div class="trait-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Attribute Increase</span>
+                                        <span class="trait-formula">New Level × 5</span>
+                                    </div>
+                                    <div class="trait-description">Increase Physical, Social, or Mental Attributes</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level" data-level="1" data-cost="5" onclick="addAttributeToCart(1, 5)">●</div>
+                                        <div class="dot-level" data-level="2" data-cost="10" onclick="addAttributeToCart(2, 10)">●●</div>
+                                        <div class="dot-level" data-level="3" data-cost="15" onclick="addAttributeToCart(3, 15)">●●●</div>
+                                        <div class="dot-level" data-level="4" data-cost="20" onclick="addAttributeToCart(4, 20)">●●●●</div>
+                                        <div class="dot-level" data-level="5" data-cost="25" onclick="addAttributeToCart(5, 25)">●●●●●</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Shelf 2 -->
-                        <div class="shelf" id="shelf-2">
+                        <!-- Skills -->
+                        <div class="shelf" id="skills-shelf">
                             <div class="shelf-header">
-                                <h3 class="shelf-title">Shelf 2</h3>
-                                <i class="fas fa-gem shelf-icon"></i>
+                                <h3 class="shelf-title">Skills</h3>
+                                <i class="fas fa-tools shelf-icon"></i>
                             </div>
                             <div class="shelf-content">
-                                <p class="shelf-placeholder">Coming Soon...</p>
+                                <div class="trait-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Skill Increase</span>
+                                        <span class="trait-formula">New Level × 3</span>
+                                    </div>
+                                    <div class="trait-description">Increase any Physical, Social, or Mental Skill</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level" data-level="1" data-cost="3" onclick="addSkillToCart(1, 3)">●</div>
+                                        <div class="dot-level" data-level="2" data-cost="6" onclick="addSkillToCart(2, 6)">●●</div>
+                                        <div class="dot-level" data-level="3" data-cost="9" onclick="addSkillToCart(3, 9)">●●●</div>
+                                        <div class="dot-level" data-level="4" data-cost="12" onclick="addSkillToCart(4, 12)">●●●●</div>
+                                        <div class="dot-level" data-level="5" data-cost="15" onclick="addSkillToCart(5, 15)">●●●●●</div>
+                                    </div>
+                                </div>
+                                <div class="trait-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">New Specialty</span>
+                                        <span class="trait-formula">3 XP</span>
+                                    </div>
+                                    <div class="trait-description">Add a specialty to an existing skill</div>
+                                    <button class="single-purchase-btn" onclick="addToCart({name: 'New Specialty', cost: 3, category: 'Skills'})">Purchase (3 XP)</button>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Shelf 3 -->
-                        <div class="shelf" id="shelf-3">
+                        <!-- Clan Disciplines -->
+                        <div class="shelf" id="clan-disciplines-shelf">
                             <div class="shelf-header">
-                                <h3 class="shelf-title">Shelf 3</h3>
-                                <i class="fas fa-scroll shelf-icon"></i>
+                                <h3 class="shelf-title">Clan Disciplines</h3>
+                                <i class="fas fa-magic shelf-icon"></i>
                             </div>
                             <div class="shelf-content">
-                                <p class="shelf-placeholder">Coming Soon...</p>
+                                <div class="trait-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Clan Discipline</span>
+                                        <span class="trait-formula">New Level × 5</span>
+                                    </div>
+                                    <div class="trait-description">Increase your clan's in-clan Disciplines</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level" data-level="1" data-cost="5" onclick="addClanDisciplineToCart(1, 5)">●</div>
+                                        <div class="dot-level" data-level="2" data-cost="10" onclick="addClanDisciplineToCart(2, 10)">●●</div>
+                                        <div class="dot-level" data-level="3" data-cost="15" onclick="addClanDisciplineToCart(3, 15)">●●●</div>
+                                        <div class="dot-level" data-level="4" data-cost="20" onclick="addClanDisciplineToCart(4, 20)">●●●●</div>
+                                        <div class="dot-level" data-level="5" data-cost="25" onclick="addClanDisciplineToCart(5, 25)">●●●●●</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Right Column -->
                     <div class="shelves-column right">
-                        <!-- Shelf 4 -->
-                        <div class="shelf" id="shelf-4">
+                        <!-- Other Disciplines -->
+                        <div class="shelf" id="other-disciplines-shelf">
                             <div class="shelf-header">
-                                <h3 class="shelf-title">Shelf 4</h3>
+                                <h3 class="shelf-title">Other Disciplines</h3>
                                 <i class="fas fa-eye shelf-icon"></i>
                             </div>
                             <div class="shelf-content">
-                                <p class="shelf-placeholder">Coming Soon...</p>
+                                <div class="trait-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Out-of-Clan Discipline</span>
+                                        <span class="trait-formula">New Level × 7</span>
+                                    </div>
+                                    <div class="trait-description">Learn Disciplines outside your clan (including Predator type)</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level" data-level="1" data-cost="7" onclick="addOtherDisciplineToCart(1, 7)">●</div>
+                                        <div class="dot-level" data-level="2" data-cost="14" onclick="addOtherDisciplineToCart(2, 14)">●●</div>
+                                        <div class="dot-level" data-level="3" data-cost="21" onclick="addOtherDisciplineToCart(3, 21)">●●●</div>
+                                        <div class="dot-level" data-level="4" data-cost="28" onclick="addOtherDisciplineToCart(4, 28)">●●●●</div>
+                                        <div class="dot-level" data-level="5" data-cost="35" onclick="addOtherDisciplineToCart(5, 35)">●●●●●</div>
+                                    </div>
+                                </div>
+                                <div class="trait-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Caitiff Discipline</span>
+                                        <span class="trait-formula">New Level × 6</span>
+                                    </div>
+                                    <div class="trait-description">Caitiff learning any Discipline (including Predator type)</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level" data-level="1" data-cost="6" onclick="addCaitiffDisciplineToCart(1, 6)">●</div>
+                                        <div class="dot-level" data-level="2" data-cost="12" onclick="addCaitiffDisciplineToCart(2, 12)">●●</div>
+                                        <div class="dot-level" data-level="3" data-cost="18" onclick="addCaitiffDisciplineToCart(3, 18)">●●●</div>
+                                        <div class="dot-level" data-level="4" data-cost="24" onclick="addCaitiffDisciplineToCart(4, 24)">●●●●</div>
+                                        <div class="dot-level" data-level="5" data-cost="30" onclick="addCaitiffDisciplineToCart(5, 30)">●●●●●</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Shelf 5 -->
-                        <div class="shelf" id="shelf-5">
+                        <!-- Blood Sorcery -->
+                        <div class="shelf" id="blood-sorcery-shelf">
                             <div class="shelf-header">
-                                <h3 class="shelf-title">Shelf 5</h3>
-                                <i class="fas fa-heart shelf-icon"></i>
+                                <h3 class="shelf-title">Blood Sorcery</h3>
+                                <i class="fas fa-flask shelf-icon"></i>
                             </div>
                             <div class="shelf-content">
-                                <p class="shelf-placeholder">Coming Soon...</p>
+                                <div class="trait-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Blood Sorcery Ritual</span>
+                                        <span class="trait-formula">Ritual Level × 3</span>
+                                    </div>
+                                    <div class="trait-description">Learn new Blood Sorcery rituals</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level" data-level="1" data-cost="3" onclick="addRitualToCart(1, 3)">●</div>
+                                        <div class="dot-level" data-level="2" data-cost="6" onclick="addRitualToCart(2, 6)">●●</div>
+                                        <div class="dot-level" data-level="3" data-cost="9" onclick="addRitualToCart(3, 9)">●●●</div>
+                                        <div class="dot-level" data-level="4" data-cost="12" onclick="addRitualToCart(4, 12)">●●●●</div>
+                                        <div class="dot-level" data-level="5" data-cost="15" onclick="addRitualToCart(5, 15)">●●●●●</div>
+                                    </div>
+                                </div>
+                                <div class="trait-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Thin Blood Formula</span>
+                                        <span class="trait-formula">Formula Level × 3</span>
+                                    </div>
+                                    <div class="trait-description">Learn new Thin Blood alchemy formulas</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level" data-level="1" data-cost="3" onclick="addFormulaToCart(1, 3)">●</div>
+                                        <div class="dot-level" data-level="2" data-cost="6" onclick="addFormulaToCart(2, 6)">●●</div>
+                                        <div class="dot-level" data-level="3" data-cost="9" onclick="addFormulaToCart(3, 9)">●●●</div>
+                                        <div class="dot-level" data-level="4" data-cost="12" onclick="addFormulaToCart(4, 12)">●●●●</div>
+                                        <div class="dot-level" data-level="5" data-cost="15" onclick="addFormulaToCart(5, 15)">●●●●●</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Shelf 6 -->
-                        <div class="shelf" id="shelf-6">
+                        <!-- Advantages -->
+                        <div class="shelf" id="advantages-shelf">
                             <div class="shelf-header">
-                                <h3 class="shelf-title">Shelf 6</h3>
+                                <h3 class="shelf-title">Advantages</h3>
                                 <i class="fas fa-shield-alt shelf-icon"></i>
                             </div>
                             <div class="shelf-content">
-                                <p class="shelf-placeholder">Coming Soon...</p>
+                                <div class="trait-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Advantage</span>
+                                        <span class="trait-formula">3 XP per dot</span>
+                                    </div>
+                                    <div class="trait-description">Purchase Merits, Flaws, or Backgrounds</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level" data-level="1" data-cost="3" onclick="addAdvantageToCart(1, 3)">●</div>
+                                        <div class="dot-level" data-level="2" data-cost="6" onclick="addAdvantageToCart(2, 6)">●●</div>
+                                        <div class="dot-level" data-level="3" data-cost="9" onclick="addAdvantageToCart(3, 9)">●●●</div>
+                                        <div class="dot-level" data-level="4" data-cost="12" onclick="addAdvantageToCart(4, 12)">●●●●</div>
+                                        <div class="dot-level" data-level="5" data-cost="15" onclick="addAdvantageToCart(5, 15)">●●●●●</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Shelf 7 -->
-                        <div class="shelf" id="shelf-7">
+                        <!-- Blood Potency -->
+                        <div class="shelf" id="blood-potency-shelf">
                             <div class="shelf-header">
-                                <h3 class="shelf-title">Shelf 7</h3>
-                                <i class="fas fa-star shelf-icon"></i>
+                                <h3 class="shelf-title">Blood Potency</h3>
+                                <i class="fas fa-tint shelf-icon"></i>
                             </div>
                             <div class="shelf-content">
-                                <p class="shelf-placeholder">Coming Soon...</p>
+                                <div class="trait-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Blood Potency</span>
+                                        <span class="trait-formula">New Level × 10</span>
+                                    </div>
+                                    <div class="trait-description">Increase Blood Potency (max varies by Generation p214, see drawbacks p216)</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level" data-level="1" data-cost="10" onclick="addBloodPotencyToCart(1, 10)">●</div>
+                                        <div class="dot-level" data-level="2" data-cost="20" onclick="addBloodPotencyToCart(2, 20)">●●</div>
+                                        <div class="dot-level" data-level="3" data-cost="30" onclick="addBloodPotencyToCart(3, 30)">●●●</div>
+                                        <div class="dot-level" data-level="4" data-cost="40" onclick="addBloodPotencyToCart(4, 40)">●●●●</div>
+                                        <div class="dot-level" data-level="5" data-cost="50" onclick="addBloodPotencyToCart(5, 50)">●●●●●</div>
+                                        <div class="dot-level" data-level="6" data-cost="60" onclick="addBloodPotencyToCart(6, 60)">●●●●●●</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

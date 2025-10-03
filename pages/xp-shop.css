@@ -365,6 +365,112 @@ body {
     margin: 0;
 }
 
+/* Trait Items */
+.trait-item {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(220, 38, 127, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.trait-item:hover {
+    border-color: rgba(220, 38, 127, 0.4);
+    background: rgba(220, 38, 127, 0.05);
+}
+
+.trait-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.trait-name {
+    color: #e5e5e5;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.trait-formula {
+    color: #dc267f;
+    font-weight: bold;
+    font-size: 0.9rem;
+    background: rgba(220, 38, 127, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(220, 38, 127, 0.3);
+}
+
+.trait-description {
+    color: #b0b0b0;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+/* Dots System */
+.dots-container {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.dot-level {
+    background: linear-gradient(135deg, rgba(25, 25, 25, 0.9), rgba(15, 15, 15, 0.9));
+    border: 2px solid rgba(220, 38, 127, 0.3);
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    color: #dc267f;
+    position: relative;
+    min-width: 60px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.dot-level:hover {
+    border-color: #dc267f;
+    background: linear-gradient(135deg, rgba(220, 38, 127, 0.2), rgba(139, 0, 0, 0.2));
+    box-shadow: 0 0 10px rgba(220, 38, 127, 0.3);
+    transform: translateY(-2px);
+}
+
+.dot-level::after {
+    content: attr(data-cost) " XP";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    color: #888;
+    white-space: nowrap;
+}
+
+/* Single Purchase Button */
+.single-purchase-btn {
+    background: linear-gradient(135deg, rgba(220, 38, 127, 0.8), rgba(139, 0, 0, 0.8));
+    border: 1px solid #dc267f;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Crimson Text', serif;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.single-purchase-btn:hover {
+    background: linear-gradient(135deg, rgba(220, 38, 127, 1), rgba(139, 0, 0, 1));
+    box-shadow: 0 0 10px rgba(220, 38, 127, 0.3);
+    transform: translateY(-1px);
+}
+
 /* Shopping Cart */
 .shopping-cart {
     background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(15, 15, 15, 0.95));
@@ -543,5 +649,44 @@ body {
     
     .shop-logo h1 {
         font-size: 1.8rem;
+    }
+    
+    /* Mobile dots adjustments */
+    .dots-container {
+        gap: 0.3rem;
+    }
+    
+    .dot-level {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.7rem;
+        min-width: 50px;
+    }
+    
+    .dot-level::after {
+        font-size: 0.6rem;
+        bottom: -18px;
+    }
+    
+    .trait-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+    
+    .trait-formula {
+        align-self: flex-end;
+    }
+}
+
+@media (max-width: 480px) {
+    .dots-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .dot-level {
+        width: 100%;
+        max-width: 200px;
     }
 }
