@@ -49,8 +49,25 @@ function switchSplat(splat) {
         shopContent.classList.add('active');
     }
     
+    // Update shop header based on splat
+    updateShopHeader(splat);
+    
     // Clear cart when switching splats
     clearCart();
+}
+
+function updateShopHeader(splat) {
+    const shopLogo = document.querySelector('.shop-logo h1');
+    const shopTagline = document.querySelector('.shop-tagline');
+    
+    if (splat === 'vampire') {
+        shopLogo.textContent = 'The Crimson Exchange';
+        shopTagline.textContent = 'Where Power Has Its Price';
+    } else if (splat === 'mage') {
+        shopLogo.textContent = 'The Alchemist\'s Sanctum';
+        shopTagline.textContent = 'Where Knowledge Becomes Power';
+    }
+    // Add more splats as needed
 }
 
 function addToCart(item) {
@@ -329,6 +346,57 @@ function addBloodPotencyToCart(level, cost) {
         name: `Blood Potency Level ${level}`,
         cost: cost,
         category: 'Blood Potency',
+        level: level
+    };
+    addToCart(item);
+}
+
+// Mage-specific trait addition functions
+function addMageAttributeToCart(level, cost) {
+    const item = {
+        name: `Mage Attribute Level ${level}`,
+        cost: cost,
+        category: 'Mage Attributes',
+        level: level
+    };
+    addToCart(item);
+}
+
+function addMageSkillToCart(level, cost) {
+    const item = {
+        name: `Mage Skill Level ${level}`,
+        cost: cost,
+        category: 'Mage Skills',
+        level: level
+    };
+    addToCart(item);
+}
+
+function addMageSphereToCart(level, cost) {
+    const item = {
+        name: `Sphere Level ${level}`,
+        cost: cost,
+        category: 'Spheres',
+        level: level
+    };
+    addToCart(item);
+}
+
+function addMageAdvantageToCart(dots, cost) {
+    const item = {
+        name: `Mage Advantage (${dots} dot${dots > 1 ? 's' : ''})`,
+        cost: cost,
+        category: 'Mage Advantages',
+        level: dots
+    };
+    addToCart(item);
+}
+
+function addMageAreteToCart(level, cost) {
+    const item = {
+        name: `Arete Level ${level}`,
+        cost: cost,
+        category: 'Arete',
         level: level
     };
     addToCart(item);

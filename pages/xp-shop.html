@@ -57,10 +57,9 @@
                         <span>Werewolf</span>
                         <div class="coming-soon-badge">Soon</div>
                     </button>
-                    <button class="splat-tab disabled" data-splat="mage" onclick="switchSplat('mage')">
+                    <button class="splat-tab" data-splat="mage" onclick="switchSplat('mage')">
                         <img src="../splatsymbols/magesymbol.png" alt="Mage" class="tab-icon">
                         <span>Mage</span>
-                        <div class="coming-soon-badge">Soon</div>
                     </button>
                 </div>
             </div>
@@ -296,6 +295,182 @@
                                         <div class="dot-level" data-level="4" data-cost="40" onclick="addBloodPotencyToCart(4, 40)">●●●●</div>
                                         <div class="dot-level" data-level="5" data-cost="50" onclick="addBloodPotencyToCart(5, 50)">●●●●●</div>
                                         <div class="dot-level" data-level="6" data-cost="60" onclick="addBloodPotencyToCart(6, 60)">●●●●●●</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mage Shop Content -->
+            <div id="mage-shop" class="shop-content mage-theme">
+                <h2 class="shop-title mage-title">The Alchemist's Sanctum</h2>
+                <div class="shelves-container mage-shelves">
+                    <!-- Left Column -->
+                    <div class="shelves-column left">
+                        <!-- Attributes -->
+                        <div class="shelf mage-shelf" id="mage-attributes-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Essence Attributes</h3>
+                                <i class="fas fa-vial shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item mage-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Attribute Increase</span>
+                                        <span class="trait-formula mage-formula">New Level × 5</span>
+                                    </div>
+                                    <div class="trait-description">Enhance Physical, Social, or Mental Attributes through mystical means</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level mage-dot" data-level="1" data-cost="5" onclick="addMageAttributeToCart(1, 5)">●</div>
+                                        <div class="dot-level mage-dot" data-level="2" data-cost="10" onclick="addMageAttributeToCart(2, 10)">●●</div>
+                                        <div class="dot-level mage-dot" data-level="3" data-cost="15" onclick="addMageAttributeToCart(3, 15)">●●●</div>
+                                        <div class="dot-level mage-dot" data-level="4" data-cost="20" onclick="addMageAttributeToCart(4, 20)">●●●●</div>
+                                        <div class="dot-level mage-dot" data-level="5" data-cost="25" onclick="addMageAttributeToCart(5, 25)">●●●●●</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skills -->
+                        <div class="shelf mage-shelf" id="mage-skills-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Mundane Arts</h3>
+                                <i class="fas fa-book-open shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item mage-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Skill Increase</span>
+                                        <span class="trait-formula mage-formula">New Level × 3</span>
+                                    </div>
+                                    <div class="trait-description">Improve mundane abilities and knowledge</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level mage-dot" data-level="1" data-cost="3" onclick="addMageSkillToCart(1, 3)">●</div>
+                                        <div class="dot-level mage-dot" data-level="2" data-cost="6" onclick="addMageSkillToCart(2, 6)">●●</div>
+                                        <div class="dot-level mage-dot" data-level="3" data-cost="9" onclick="addMageSkillToCart(3, 9)">●●●</div>
+                                        <div class="dot-level mage-dot" data-level="4" data-cost="12" onclick="addMageSkillToCart(4, 12)">●●●●</div>
+                                        <div class="dot-level mage-dot" data-level="5" data-cost="15" onclick="addMageSkillToCart(5, 15)">●●●●●</div>
+                                    </div>
+                                </div>
+                                <div class="trait-item mage-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">New Specialty</span>
+                                        <span class="trait-formula mage-formula">3 XP</span>
+                                    </div>
+                                    <div class="trait-description">Focus your expertise in a specific area</div>
+                                    <button class="single-purchase-btn mage-btn" onclick="addToCart({name: 'Mage Specialty', cost: 3, category: 'Skills'})">Purchase (3 XP)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Spheres -->
+                        <div class="shelf mage-shelf" id="mage-spheres-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Sphere Mastery</h3>
+                                <i class="fas fa-atom shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item mage-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Sphere Increase</span>
+                                        <span class="trait-formula mage-formula">New Level × 5</span>
+                                    </div>
+                                    <div class="trait-description">Deepen understanding of the fundamental forces of reality</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level mage-dot" data-level="1" data-cost="5" onclick="addMageSphereToCart(1, 5)">●</div>
+                                        <div class="dot-level mage-dot" data-level="2" data-cost="10" onclick="addMageSphereToCart(2, 10)">●●</div>
+                                        <div class="dot-level mage-dot" data-level="3" data-cost="15" onclick="addMageSphereToCart(3, 15)">●●●</div>
+                                        <div class="dot-level mage-dot" data-level="4" data-cost="20" onclick="addMageSphereToCart(4, 20)">●●●●</div>
+                                        <div class="dot-level mage-dot" data-level="5" data-cost="25" onclick="addMageSphereToCart(5, 25)">●●●●●</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Advantages -->
+                        <div class="shelf mage-shelf" id="mage-advantages-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Mystical Advantages</h3>
+                                <i class="fas fa-gem shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item mage-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Advantage</span>
+                                        <span class="trait-formula mage-formula">3 XP per dot</span>
+                                    </div>
+                                    <div class="trait-description">Acquire Merits, Backgrounds, and other beneficial traits</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level mage-dot" data-level="1" data-cost="3" onclick="addMageAdvantageToCart(1, 3)">●</div>
+                                        <div class="dot-level mage-dot" data-level="2" data-cost="6" onclick="addMageAdvantageToCart(2, 6)">●●</div>
+                                        <div class="dot-level mage-dot" data-level="3" data-cost="9" onclick="addMageAdvantageToCart(3, 9)">●●●</div>
+                                        <div class="dot-level mage-dot" data-level="4" data-cost="12" onclick="addMageAdvantageToCart(4, 12)">●●●●</div>
+                                        <div class="dot-level mage-dot" data-level="5" data-cost="15" onclick="addMageAdvantageToCart(5, 15)">●●●●●</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="shelves-column right">
+                        <!-- Craft -->
+                        <div class="shelf mage-shelf" id="mage-craft-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Craft Mastery</h3>
+                                <i class="fas fa-hammer shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item mage-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Craft</span>
+                                        <span class="trait-formula mage-formula">7 XP</span>
+                                    </div>
+                                    <div class="trait-description">Learn new magical crafting techniques and abilities</div>
+                                    <button class="single-purchase-btn mage-btn" onclick="addToCart({name: 'Craft', cost: 7, category: 'Craft'})">Purchase (7 XP)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Perk -->
+                        <div class="shelf mage-shelf" id="mage-perk-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Mystical Perks</h3>
+                                <i class="fas fa-star shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item mage-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Perk</span>
+                                        <span class="trait-formula mage-formula">5 XP</span>
+                                    </div>
+                                    <div class="trait-description">Gain special perks and unique abilities</div>
+                                    <button class="single-purchase-btn mage-btn" onclick="addToCart({name: 'Perk', cost: 5, category: 'Perks'})">Purchase (5 XP)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Arete -->
+                        <div class="shelf mage-shelf" id="mage-arete-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Arete Enlightenment</h3>
+                                <i class="fas fa-sun shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item mage-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Arete</span>
+                                        <span class="trait-formula mage-formula">New Level × 10</span>
+                                    </div>
+                                    <div class="trait-description">Achieve higher levels of magical enlightenment and understanding</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level mage-dot" data-level="1" data-cost="10" onclick="addMageAreteToCart(1, 10)">●</div>
+                                        <div class="dot-level mage-dot" data-level="2" data-cost="20" onclick="addMageAreteToCart(2, 20)">●●</div>
+                                        <div class="dot-level mage-dot" data-level="3" data-cost="30" onclick="addMageAreteToCart(3, 30)">●●●</div>
+                                        <div class="dot-level mage-dot" data-level="4" data-cost="40" onclick="addMageAreteToCart(4, 40)">●●●●</div>
+                                        <div class="dot-level mage-dot" data-level="5" data-cost="50" onclick="addMageAreteToCart(5, 50)">●●●●●</div>
                                     </div>
                                 </div>
                             </div>
