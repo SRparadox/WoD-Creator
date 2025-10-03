@@ -66,6 +66,9 @@ function updateShopHeader(splat) {
     } else if (splat === 'mage') {
         shopLogo.textContent = 'The Alchemist\'s Sanctum';
         shopTagline.textContent = 'Where Knowledge Becomes Power';
+    } else if (splat === 'werewolf') {
+        shopLogo.textContent = 'The Spirit Grove';
+        shopTagline.textContent = 'Where Nature\'s Fury Awaits';
     }
     // Add more splats as needed
 }
@@ -397,6 +400,67 @@ function addMageAreteToCart(level, cost) {
         name: `Arete Level ${level}`,
         cost: cost,
         category: 'Arete',
+        level: level
+    };
+    addToCart(item);
+}
+
+// Werewolf-specific trait addition functions
+function addWerewolfAttributeToCart(level, cost) {
+    const item = {
+        name: `Werewolf Attribute Level ${level}`,
+        cost: cost,
+        category: 'Werewolf Attributes',
+        level: level
+    };
+    addToCart(item);
+}
+
+function addWerewolfSkillToCart(level, cost) {
+    const item = {
+        name: `Werewolf Skill Level ${level}`,
+        cost: cost,
+        category: 'Werewolf Skills',
+        level: level
+    };
+    addToCart(item);
+}
+
+function addWerewolfRenownToCart(level, cost) {
+    const item = {
+        name: `Renown Level ${level}`,
+        cost: cost,
+        category: 'Renown',
+        level: level
+    };
+    addToCart(item);
+}
+
+function addWerewolfAdvantageToCart(dots, cost) {
+    const item = {
+        name: `Werewolf Advantage (${dots} dot${dots > 1 ? 's' : ''})`,
+        cost: cost,
+        category: 'Werewolf Advantages',
+        level: dots
+    };
+    addToCart(item);
+}
+
+function addWerewolfGiftToCart(level, cost) {
+    const item = {
+        name: `Gift Level ${level}`,
+        cost: cost,
+        category: 'Gifts',
+        level: level
+    };
+    addToCart(item);
+}
+
+function addWerewolfCaernToCart(level, cost) {
+    const item = {
+        name: `Caern Value Level ${level}`,
+        cost: cost,
+        category: 'Caern Value',
         level: level
     };
     addToCart(item);

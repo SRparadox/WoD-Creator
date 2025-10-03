@@ -52,10 +52,9 @@
                         <span>Hunter</span>
                         <div class="coming-soon-badge">Soon</div>
                     </button>
-                    <button class="splat-tab disabled" data-splat="werewolf" onclick="switchSplat('werewolf')">
+                    <button class="splat-tab" data-splat="werewolf" onclick="switchSplat('werewolf')">
                         <img src="../splatsymbols/werewolfsymbol.webp" alt="Werewolf" class="tab-icon">
                         <span>Werewolf</span>
-                        <div class="coming-soon-badge">Soon</div>
                     </button>
                     <button class="splat-tab" data-splat="mage" onclick="switchSplat('mage')">
                         <img src="../splatsymbols/magesymbol.png" alt="Mage" class="tab-icon">
@@ -471,6 +470,188 @@
                                         <div class="dot-level mage-dot" data-level="3" data-cost="30" onclick="addMageAreteToCart(3, 30)">●●●</div>
                                         <div class="dot-level mage-dot" data-level="4" data-cost="40" onclick="addMageAreteToCart(4, 40)">●●●●</div>
                                         <div class="dot-level mage-dot" data-level="5" data-cost="50" onclick="addMageAreteToCart(5, 50)">●●●●●</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Werewolf Shop Content -->
+            <div id="werewolf-shop" class="shop-content werewolf-theme">
+                <h2 class="shop-title werewolf-title">The Spirit Grove</h2>
+                <div class="shelves-container werewolf-shelves">
+                    <!-- Left Column -->
+                    <div class="shelves-column left">
+                        <!-- Attributes -->
+                        <div class="shelf werewolf-shelf" id="werewolf-attributes-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Primal Attributes</h3>
+                                <i class="fas fa-mountain shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item werewolf-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Attribute Increase</span>
+                                        <span class="trait-formula werewolf-formula">New Level × 5</span>
+                                    </div>
+                                    <div class="trait-description">Strengthen your Physical, Social, or Mental prowess through Gaia's blessing</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level werewolf-dot" data-level="1" data-cost="5" onclick="addWerewolfAttributeToCart(1, 5)">●</div>
+                                        <div class="dot-level werewolf-dot" data-level="2" data-cost="10" onclick="addWerewolfAttributeToCart(2, 10)">●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="3" data-cost="15" onclick="addWerewolfAttributeToCart(3, 15)">●●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="4" data-cost="20" onclick="addWerewolfAttributeToCart(4, 20)">●●●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="5" data-cost="25" onclick="addWerewolfAttributeToCart(5, 25)">●●●●●</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skills -->
+                        <div class="shelf werewolf-shelf" id="werewolf-skills-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Pack Wisdom</h3>
+                                <i class="fas fa-paw shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item werewolf-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Skill Increase</span>
+                                        <span class="trait-formula werewolf-formula">New Level × 3</span>
+                                    </div>
+                                    <div class="trait-description">Hone your abilities through practice and pack teaching</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level werewolf-dot" data-level="1" data-cost="3" onclick="addWerewolfSkillToCart(1, 3)">●</div>
+                                        <div class="dot-level werewolf-dot" data-level="2" data-cost="6" onclick="addWerewolfSkillToCart(2, 6)">●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="3" data-cost="9" onclick="addWerewolfSkillToCart(3, 9)">●●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="4" data-cost="12" onclick="addWerewolfSkillToCart(4, 12)">●●●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="5" data-cost="15" onclick="addWerewolfSkillToCart(5, 15)">●●●●●</div>
+                                    </div>
+                                </div>
+                                <div class="trait-item werewolf-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Specialty</span>
+                                        <span class="trait-formula werewolf-formula">3 XP</span>
+                                    </div>
+                                    <div class="trait-description">Develop a focused area of expertise</div>
+                                    <button class="single-purchase-btn werewolf-btn" onclick="addToCart({name: 'Werewolf Specialty', cost: 3, category: 'Skills'})">Purchase (3 XP)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Renown -->
+                        <div class="shelf werewolf-shelf" id="werewolf-renown-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Tribal Renown</h3>
+                                <i class="fas fa-medal shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item werewolf-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Renown</span>
+                                        <span class="trait-formula werewolf-formula">New Level × 5</span>
+                                    </div>
+                                    <div class="trait-description">Gain recognition for your deeds in Glory, Honor, and Wisdom</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level werewolf-dot" data-level="1" data-cost="5" onclick="addWerewolfRenownToCart(1, 5)">●</div>
+                                        <div class="dot-level werewolf-dot" data-level="2" data-cost="10" onclick="addWerewolfRenownToCart(2, 10)">●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="3" data-cost="15" onclick="addWerewolfRenownToCart(3, 15)">●●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="4" data-cost="20" onclick="addWerewolfRenownToCart(4, 20)">●●●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="5" data-cost="25" onclick="addWerewolfRenownToCart(5, 25)">●●●●●</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Advantages -->
+                        <div class="shelf werewolf-shelf" id="werewolf-advantages-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Gaia's Blessings</h3>
+                                <i class="fas fa-leaf shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item werewolf-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Advantage</span>
+                                        <span class="trait-formula werewolf-formula">3 XP per dot</span>
+                                    </div>
+                                    <div class="trait-description">Acquire Merits, Backgrounds, and spiritual boons</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level werewolf-dot" data-level="1" data-cost="3" onclick="addWerewolfAdvantageToCart(1, 3)">●</div>
+                                        <div class="dot-level werewolf-dot" data-level="2" data-cost="6" onclick="addWerewolfAdvantageToCart(2, 6)">●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="3" data-cost="9" onclick="addWerewolfAdvantageToCart(3, 9)">●●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="4" data-cost="12" onclick="addWerewolfAdvantageToCart(4, 12)">●●●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="5" data-cost="15" onclick="addWerewolfAdvantageToCart(5, 15)">●●●●●</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="shelves-column right">
+                        <!-- Gifts -->
+                        <div class="shelf werewolf-shelf" id="werewolf-gifts-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Spirit Gifts</h3>
+                                <i class="fas fa-magic shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item werewolf-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">New Gift</span>
+                                        <span class="trait-formula werewolf-formula">Gift Level × 2</span>
+                                    </div>
+                                    <div class="trait-description">Learn new Gifts from the spirits through quests and teaching</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level werewolf-dot" data-level="1" data-cost="2" onclick="addWerewolfGiftToCart(1, 2)">●</div>
+                                        <div class="dot-level werewolf-dot" data-level="2" data-cost="4" onclick="addWerewolfGiftToCart(2, 4)">●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="3" data-cost="6" onclick="addWerewolfGiftToCart(3, 6)">●●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="4" data-cost="8" onclick="addWerewolfGiftToCart(4, 8)">●●●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="5" data-cost="10" onclick="addWerewolfGiftToCart(5, 10)">●●●●●</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rites -->
+                        <div class="shelf werewolf-shelf" id="werewolf-rites-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Sacred Rites</h3>
+                                <i class="fas fa-fire shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item werewolf-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">New Rite</span>
+                                        <span class="trait-formula werewolf-formula">5 XP</span>
+                                    </div>
+                                    <div class="trait-description">Learn ancient rituals and ceremonial practices</div>
+                                    <button class="single-purchase-btn werewolf-btn" onclick="addToCart({name: 'New Rite', cost: 5, category: 'Rites'})">Purchase (5 XP)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Caern Value -->
+                        <div class="shelf werewolf-shelf" id="werewolf-caern-shelf">
+                            <div class="shelf-header">
+                                <h3 class="shelf-title">Caern Sanctity</h3>
+                                <i class="fas fa-tree shelf-icon"></i>
+                            </div>
+                            <div class="shelf-content">
+                                <div class="trait-item werewolf-item">
+                                    <div class="trait-header">
+                                        <span class="trait-name">Caern Value</span>
+                                        <span class="trait-formula werewolf-formula">New Level × 5</span>
+                                    </div>
+                                    <div class="trait-description">Strengthen your connection to sacred Caerns and their power</div>
+                                    <div class="dots-container">
+                                        <div class="dot-level werewolf-dot" data-level="1" data-cost="5" onclick="addWerewolfCaernToCart(1, 5)">●</div>
+                                        <div class="dot-level werewolf-dot" data-level="2" data-cost="10" onclick="addWerewolfCaernToCart(2, 10)">●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="3" data-cost="15" onclick="addWerewolfCaernToCart(3, 15)">●●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="4" data-cost="20" onclick="addWerewolfCaernToCart(4, 20)">●●●●</div>
+                                        <div class="dot-level werewolf-dot" data-level="5" data-cost="25" onclick="addWerewolfCaernToCart(5, 25)">●●●●●</div>
                                     </div>
                                 </div>
                             </div>

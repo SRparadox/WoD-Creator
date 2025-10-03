@@ -749,6 +749,137 @@ body {
     100% { transform: translateY(0px); }
 }
 
+/* Werewolf Theme Overrides - Spirit Forest */
+.werewolf-theme {
+    position: relative;
+}
+
+.werewolf-theme::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(34, 139, 34, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(46, 125, 50, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.werewolf-title {
+    color: #228b22 !important;
+    text-shadow: 
+        0 0 5px #228b22,
+        0 0 10px #32cd32,
+        0 0 15px #8b4513 !important;
+    font-family: 'Cinzel', serif;
+}
+
+.werewolf-shelves {
+    position: relative;
+    z-index: 1;
+}
+
+.werewolf-shelf {
+    background: linear-gradient(135deg, rgba(25, 45, 25, 0.95), rgba(35, 25, 15, 0.95)) !important;
+    border: 2px solid rgba(34, 139, 34, 0.3) !important;
+    box-shadow: 
+        0 4px 15px rgba(46, 125, 50, 0.1),
+        inset 0 1px 0 rgba(139, 69, 19, 0.1) !important;
+}
+
+.werewolf-shelf:hover {
+    border-color: #228b22 !important;
+    box-shadow: 
+        0 8px 25px rgba(34, 139, 34, 0.2),
+        inset 0 1px 0 rgba(139, 69, 19, 0.2) !important;
+}
+
+.werewolf-shelf .shelf-title {
+    color: #228b22 !important;
+    text-shadow: 0 0 5px rgba(34, 139, 34, 0.5);
+}
+
+.werewolf-shelf .shelf-icon {
+    color: #8b4513 !important;
+}
+
+.werewolf-item {
+    background: rgba(20, 45, 20, 0.4) !important;
+    border: 1px solid rgba(34, 139, 34, 0.2) !important;
+}
+
+.werewolf-item:hover {
+    border-color: rgba(34, 139, 34, 0.4) !important;
+    background: rgba(46, 125, 50, 0.05) !important;
+}
+
+.werewolf-formula {
+    background: rgba(34, 139, 34, 0.1) !important;
+    border: 1px solid rgba(46, 125, 50, 0.3) !important;
+    color: #228b22 !important;
+}
+
+.werewolf-dot {
+    background: linear-gradient(135deg, rgba(25, 45, 25, 0.9), rgba(35, 25, 15, 0.9)) !important;
+    border: 2px solid rgba(34, 139, 34, 0.3) !important;
+    color: #228b22 !important;
+}
+
+.werewolf-dot:hover {
+    border-color: #228b22 !important;
+    background: linear-gradient(135deg, rgba(46, 125, 50, 0.2), rgba(139, 69, 19, 0.2)) !important;
+    box-shadow: 0 0 10px rgba(34, 139, 34, 0.3) !important;
+}
+
+.werewolf-btn {
+    background: linear-gradient(135deg, rgba(34, 139, 34, 0.8), rgba(139, 69, 19, 0.8)) !important;
+    border: 1px solid #228b22 !important;
+}
+
+.werewolf-btn:hover {
+    background: linear-gradient(135deg, rgba(46, 125, 50, 1), rgba(139, 69, 19, 1)) !important;
+    box-shadow: 0 0 10px rgba(34, 139, 34, 0.3) !important;
+}
+
+/* Werewolf-specific shelf effects */
+.werewolf-shelf::before {
+    background: linear-gradient(90deg, transparent, rgba(34, 139, 34, 0.1), transparent) !important;
+}
+
+/* Forest spirit elements floating animation */
+.werewolf-theme::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(34, 139, 34, 0.3), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(139, 69, 19, 0.2), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(46, 125, 50, 0.3), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(107, 142, 35, 0.2), transparent),
+        radial-gradient(3px 3px at 60px 100px, rgba(85, 107, 47, 0.2), transparent);
+    background-repeat: repeat;
+    background-size: 180px 120px;
+    animation: forestSpirits 25s linear infinite;
+    pointer-events: none;
+    opacity: 0.4;
+    z-index: 0;
+}
+
+@keyframes forestSpirits {
+    0% { transform: translateY(0px) translateX(0px); }
+    25% { transform: translateY(-8px) translateX(5px); }
+    50% { transform: translateY(-15px) translateX(0px); }
+    75% { transform: translateY(-8px) translateX(-5px); }
+    100% { transform: translateY(0px) translateX(0px); }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .shelves-container {
