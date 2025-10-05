@@ -762,8 +762,8 @@ const weaponsData = [
         type: "assault_rifle",
         origin: "Soviet Union",
         summary: "Modernized variant of the AK-47 with improved cartridge and reduced recoil.",
-        resources: 2,
-        damage: 3,
+        resources: 3,
+        damage: 4,
         clip: "30",
         rarity: "rare",
         special: "AK Reliability, Modern",
@@ -1094,3 +1094,11 @@ document.addEventListener('keydown', function(e) {
         }
     }
 });
+
+// Make functions globally accessible for HTML onclick handlers
+window.filterWeapons = filterWeapons;
+window.toggleCart = toggleCart;
+window.addToCart = addToCart;
+window.removeFromCart = removeFromCart;
+window.clearCart = clearCart;
+window.exportCart = exportCart;

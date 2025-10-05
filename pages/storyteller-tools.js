@@ -59,3 +59,7 @@ function openXPShop() {
 function openWeaponShop() {
     window.location.href = 'weapon-shop.html';
 }
+
+// Make functions globally accessible
+window.openXPShop = openXPShop;
+window.openWeaponShop = openWeaponShop;

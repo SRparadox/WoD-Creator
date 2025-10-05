@@ -1,6 +1,6 @@
 // XP Shop JavaScript
 
-let currentSplat = 'vampire';
+let _currentSplat = 'vampire';
 let cart = [];
 let currentXP = 0;
 
@@ -197,8 +197,8 @@ function showNotification(message) {
     }, 3000);
 }
 
-function goBack() {
-    window.location.href = 'storyteller-tools.html';
+function _goBack() {
+    globalThis.location.href = 'storyteller-tools.html';
 }
 
 // Sample item creation function (for future use)
@@ -256,7 +256,7 @@ document.addEventListener('keydown', function(e) {
 });
 
 // Export functions for potential future modules
-window.XPShop = {
+globalThis.XPShop = {
     addToCart,
     removeFromCart,
     clearCart,
@@ -499,3 +499,28 @@ function addHunterAdvantageToCart(dots, cost) {
     };
     addToCart(item);
 }
+
+// Make all functions globally accessible for HTML onclick handlers
+globalThis.addAttributeToCart = addAttributeToCart;
+globalThis.addSkillToCart = addSkillToCart;
+globalThis.addClanDisciplineToCart = addClanDisciplineToCart;
+globalThis.addOtherDisciplineToCart = addOtherDisciplineToCart;
+globalThis.addCaitiffDisciplineToCart = addCaitiffDisciplineToCart;
+globalThis.addRitualToCart = addRitualToCart;
+globalThis.addFormulaToCart = addFormulaToCart;
+globalThis.addAdvantageToCart = addAdvantageToCart;
+globalThis.addBloodPotencyToCart = addBloodPotencyToCart;
+globalThis.addMageAttributeToCart = addMageAttributeToCart;
+globalThis.addMageSkillToCart = addMageSkillToCart;
+globalThis.addMageSphereToCart = addMageSphereToCart;
+globalThis.addMageAdvantageToCart = addMageAdvantageToCart;
+globalThis.addMageAreteToCart = addMageAreteToCart;
+globalThis.addWerewolfAttributeToCart = addWerewolfAttributeToCart;
+globalThis.addWerewolfSkillToCart = addWerewolfSkillToCart;
+globalThis.addWerewolfRenownToCart = addWerewolfRenownToCart;
+globalThis.addWerewolfAdvantageToCart = addWerewolfAdvantageToCart;
+globalThis.addWerewolfGiftToCart = addWerewolfGiftToCart;
+globalThis.addWerewolfCaernToCart = addWerewolfCaernToCart;
+globalThis.addHunterAttributeToCart = addHunterAttributeToCart;
+globalThis.addHunterSkillToCart = addHunterSkillToCart;
+globalThis.addHunterAdvantageToCart = addHunterAdvantageToCart;
