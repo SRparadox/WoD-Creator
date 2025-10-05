@@ -1,0 +1,496 @@
+/* Weapon Shop Specific Styles */
+
+.page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #b91c1c;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.page-title i {
+    margin-right: 0.5rem;
+    color: #dc2626;
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    color: #d1d5db;
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+/* Cart Styles */
+.cart-container {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.cart-toggle {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(185, 28, 28, 0.3);
+    transition: all 0.3s ease;
+}
+
+.cart-toggle:hover {
+    background: linear-gradient(135deg, #b91c1c, #991b1b);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(185, 28, 28, 0.4);
+}
+
+.cart-dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: linear-gradient(135deg, rgba(25, 25, 25, 0.98), rgba(15, 15, 15, 0.98));
+    border: 1px solid rgba(185, 28, 28, 0.3);
+    border-radius: 12px;
+    width: 350px;
+    max-height: 500px;
+    overflow-y: auto;
+    display: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.cart-dropdown.active {
+    display: block;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-header h3 {
+    color: #f9fafb;
+    margin: 0;
+    font-family: 'Cinzel', serif;
+}
+
+.cart-close {
+    background: none;
+    border: none;
+    color: #d1d5db;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.cart-close:hover {
+    color: #dc2626;
+}
+
+.cart-items {
+    padding: 15px 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.cart-empty {
+    color: #9ca3af;
+    text-align: center;
+    font-style: italic;
+    margin: 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-name {
+    color: #f9fafb;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.cart-item-type {
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+.cart-item-remove {
+    background: none;
+    border: none;
+    color: #dc2626;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.cart-item-remove:hover {
+    color: #b91c1c;
+}
+
+.cart-actions {
+    padding: 15px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    gap: 10px;
+}
+
+.cart-actions .btn {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+
+/* Filter Controls */
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 2rem;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(25, 25, 25, 0.8), rgba(15, 15, 15, 0.8));
+    border: 1px solid rgba(185, 28, 28, 0.3);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 150px;
+}
+
+.filter-group label {
+    color: #f9fafb;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.filter-group select,
+.filter-group input {
+    background: rgba(55, 65, 81, 0.8);
+    border: 1px solid rgba(156, 163, 175, 0.3);
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: #f9fafb;
+    font-size: 0.9rem;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+    outline: none;
+    border-color: #dc2626;
+    box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
+}
+
+/* Weapons Grid */
+.weapons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    margin-bottom: 3rem;
+}
+
+.weapon-card {
+    background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(15, 15, 15, 0.95));
+    border: 1px solid rgba(185, 28, 28, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.weapon-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(185, 28, 28, 0.6);
+    box-shadow: 0 8px 25px rgba(185, 28, 28, 0.2);
+}
+
+.weapon-image {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.weapon-header {
+    margin-bottom: 15px;
+}
+
+.weapon-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #f9fafb;
+    margin: 0 0 5px 0;
+}
+
+.weapon-type {
+    background: rgba(185, 28, 28, 0.2);
+    color: #fca5a5;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: inline-block;
+    border: 1px solid rgba(185, 28, 28, 0.3);
+}
+
+.weapon-origin {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.weapon-summary {
+    color: #d1d5db;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+
+.weapon-stats {
+    margin-bottom: 20px;
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    color: #f9fafb;
+    font-weight: 600;
+    font-size: 0.9rem;
+    min-width: 80px;
+}
+
+.stat-value {
+    flex: 1;
+    margin-left: 10px;
+}
+
+/* Resources Dots */
+.resources-dots {
+    display: flex;
+    gap: 3px;
+}
+
+.resource-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #4b5563;
+    background: transparent;
+}
+
+.resource-dot.filled {
+    background: #10b981;
+    border-color: #10b981;
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.4);
+}
+
+/* Damage Display */
+.damage-value {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    min-width: 40px;
+}
+
+.damage-1 { background: #10b981; color: white; }
+.damage-2 { background: #f59e0b; color: white; }
+.damage-3 { background: #f97316; color: white; }
+.damage-4 { background: #dc2626; color: white; }
+.damage-5 { background: #7c3aed; color: white; }
+
+/* Rarity Display */
+.rarity-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.rarity-common { background: #6b7280; color: white; }
+.rarity-uncommon { background: #10b981; color: white; }
+.rarity-rare { background: #3b82f6; color: white; }
+
+.clip-value,
+.special-value {
+    color: #d1d5db;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.weapon-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-add-cart {
+    flex: 1;
+    background: linear-gradient(135deg, #059669, #047857);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-add-cart:hover {
+    background: linear-gradient(135deg, #047857, #065f46);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+}
+
+.btn-add-cart:disabled {
+    background: #6b7280;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #b91c1c, #991b1b);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(185, 28, 28, 0.3);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, rgba(75, 85, 99, 0.8), rgba(55, 65, 81, 0.8));
+    color: white;
+    border: 1px solid rgba(156, 163, 175, 0.3);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, rgba(55, 65, 81, 0.9), rgba(31, 41, 55, 0.9));
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.back-navigation {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cart-container {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .cart-dropdown {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90vw;
+        max-width: 350px;
+    }
+    
+    .filter-controls {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .filter-group {
+        min-width: auto;
+    }
+    
+    .weapons-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .weapon-card {
+        padding: 15px;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cart-dropdown {
+        width: 95vw;
+    }
+    
+    .weapon-actions {
+        flex-direction: column;
+    }
+    
+    .stat-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .stat-label {
+        min-width: auto;
+    }
+}

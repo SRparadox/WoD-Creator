@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weapon Shop - World of Darkness Hub by ParadoxGirl</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="VTM Weapon Shop featuring real-world firearms converted for Vampire: The Masquerade gameplay.">
+    <meta name="keywords" content="VTM, Vampire The Masquerade, Weapons, Firearms, RPG, World of Darkness">
+    <meta name="author" content="ParadoxGirl">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌙</text></svg>">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="weapon-shop.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">
+                <i class="fas fa-moon"></i>
+                <a href="../index.html" style="color: inherit; text-decoration: none;">
+                    World of Darkness Hub by ParadoxGirl
+                </a>
+            </h1>
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                    <li><a href="../index.html#vampire" class="nav-link">Vampire</a></li>
+                    <li><a href="../index.html#werewolf" class="nav-link">Werewolf</a></li>
+                    <li><a href="../index.html#mage" class="nav-link">Mage</a></li>
+                    <li><a href="../index.html#downloads" class="nav-link">Downloads</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="section active">
+            <div class="container">
+                <div class="page-header">
+                    <h2 class="page-title">
+                        <i class="fas fa-gun"></i>
+                        Weapon Shop
+                    </h2>
+                    <p class="page-subtitle">Real-world firearms converted for VTM gameplay</p>
+                </div>
+
+                <!-- Shopping Cart -->
+                <div class="cart-container">
+                    <button class="cart-toggle" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        Cart (<span id="cart-count">0</span>)
+                    </button>
+                    <div class="cart-dropdown" id="cart-dropdown">
+                        <div class="cart-header">
+                            <h3>Shopping Cart</h3>
+                            <button class="cart-close" onclick="toggleCart()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="cart-items" id="cart-items">
+                            <p class="cart-empty">Your cart is empty</p>
+                        </div>
+                        <div class="cart-actions">
+                            <button class="btn btn-secondary" onclick="clearCart()">Clear Cart</button>
+                            <button class="btn btn-primary" onclick="exportCart()">Export List</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Controls -->
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label for="category-filter">Category:</label>
+                        <select id="category-filter" onchange="filterWeapons()">
+                            <option value="all">All Weapons</option>
+                            <option value="revolver">Revolver</option>
+                            <option value="pistol">Pistol</option>
+                            <option value="rifle">Rifle</option>
+                            <option value="assault_rifle">Assault Rifle</option>
+                            <option value="battle_rifle">Battle Rifle</option>
+                            <option value="shotgun">Shotgun</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="rarity-filter">Rarity:</label>
+                        <select id="rarity-filter" onchange="filterWeapons()">
+                            <option value="all">All Rarities</option>
+                            <option value="common">Common</option>
+                            <option value="uncommon">Uncommon</option>
+                            <option value="rare">Rare</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="search-filter">Search:</label>
+                        <input type="text" id="search-filter" placeholder="Search weapons..." onkeyup="filterWeapons()">
+                    </div>
+                </div>
+
+                <!-- Weapons Grid -->
+                <div class="weapons-grid" id="weapons-grid">
+                    <!-- Weapons will be populated by JavaScript -->
+                </div>
+
+                <div class="back-navigation">
+                    <a href="storyteller-tools.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Tools
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 World of Darkness Hub by ParadoxGirl. Created for the storytelling community.</p>
+            <p class="disclaimer">
+                World of Darkness, Vampire: The Masquerade, Werewolf: The Apocalypse, and Mage: The Ascension 
+                are trademarks of Modiphius Entertainment. This is an unofficial fan site.
+            </p>
+        </div>
+    </footer>
+
+    <script src="weapon-shop.js"></script>
+</body>
+</html>

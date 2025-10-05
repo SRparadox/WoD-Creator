@@ -54,3 +54,8 @@ document.addEventListener('DOMContentLoaded', function() {
 function openXPShop() {
     window.location.href = 'xp-shop.html';
 }
+
+// Function to open Weapon Shop
+function openWeaponShop() {
+    window.location.href = 'weapon-shop.html';
+}
